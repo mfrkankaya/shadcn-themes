@@ -10,8 +10,8 @@ export function CalendarDemo() {
   const [date, setDate] = React.useState<Date | undefined>(new Date())
 
   return (
-    <Card className="h-fit">
-      <Calendar mode="single" selected={date} onSelect={setDate} />
+    <Card className="h-fit w-full sm:w-fit">
+      <Calendar mode="single" selected={date} onSelect={setDate} className="mx-auto flex items-center justify-center" />
     </Card>
   )
 }

@@ -32,7 +32,7 @@ function TeamMember({ name, email }: { name: string; email: string }) {
 
 export function TeamMembersDemo() {
   return (
-    <Card className="h-fit">
+    <Card className="h-fit w-full sm:w-fit">
       <CardHeader>
         <CardTitle>Team Members</CardTitle>
         <CardDescription>
