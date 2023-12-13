@@ -55,7 +55,7 @@ export function CookieSettingsDemo() {
           description="These cookies allow the website to provide personalized functionality."
         />
         <CookieItem
-          id="sw2"
+          id="sw3"
           title="Performance Cookies"
           description="These cookies help to improve the performance of the website."
         />
