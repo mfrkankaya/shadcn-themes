@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 
 import { cn } from "@/lib/utils"
+import { Toaster } from "@/components/ui/toaster"
 import DevThemeToggler from "@/components/dev-theme-toggler"
 import { ThemeProvider } from "@/components/theme-provider"
 import ThemeSync from "@/components/theme-sync"
@@ -31,6 +32,8 @@ export default function RootLayout({
           <DevThemeToggler />
           <ThemeSync />
         </ThemeProvider>
+        <Toaster />
+
       </body>
     </html>
   )
