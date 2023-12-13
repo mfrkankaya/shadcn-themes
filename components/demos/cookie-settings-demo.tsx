@@ -38,7 +38,7 @@ function CookieItem({
 
 export function CookieSettingsDemo() {
   return (
-    <Card className="h-fit max-w-sm w-full sm:w-fit">
+    <Card className="max-w-sm w-full sm:w-fit">
       <CardHeader>
         <CardTitle>Cookie Settings</CardTitle>
         <CardDescription>Manage your cookie settings here.</CardDescription>

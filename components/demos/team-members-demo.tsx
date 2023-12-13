@@ -10,6 +10,13 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select"
 
 function TeamMember({ name, email }: { name: string; email: string }) {
   return (
@@ -25,14 +32,24 @@ function TeamMember({ name, email }: { name: string; email: string }) {
         <p className="text-sm font-medium leading-none">{name}</p>
         <p className="text-sm text-muted-foreground">{email}</p>
       </div>
-      <div></div>
+      <Select defaultValue="1">
+        <SelectTrigger>
+          <SelectValue placeholder="Theme" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="1">Viewer</SelectItem>
+          <SelectItem value="2">Developer</SelectItem>
+          <SelectItem value="3">Billing</SelectItem>
+          <SelectItem value="4">Owner</SelectItem>
+        </SelectContent>
+      </Select>
     </div>
   )
 }
 
 export function TeamMembersDemo() {
   return (
-    <Card className="h-fit w-full sm:w-fit">
+    <Card className="w-full sm:w-fit">
       <CardHeader>
         <CardTitle>Team Members</CardTitle>
         <CardDescription>
@@ -41,8 +58,8 @@ export function TeamMembersDemo() {
       </CardHeader>
       <CardContent className="grid gap-6">
         <TeamMember name="Sofia Davis" email="m@example.com" />
-        <TeamMember name="Sofia Davis" email="m@example.com" />
-        <TeamMember name="Sofia Davis" email="m@example.com" />
+        <TeamMember name="Jackson Lee" email="p@example.com" />
+        <TeamMember name="Isabella Nguyen" email="i@example.com" />
       </CardContent>
     </Card>
   )
