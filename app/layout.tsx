@@ -1,11 +1,12 @@
+import "./globals.css"
+
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 
 import { cn } from "@/lib/utils"
 import DevThemeToggler from "@/components/dev-theme-toggler"
 import { ThemeProvider } from "@/components/theme-provider"
-
-import "./globals.css"
+import ThemeSync from "@/components/theme-sync"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,6 +29,7 @@ export default function RootLayout({
         >
           {children}
           <DevThemeToggler />
+          <ThemeSync />
         </ThemeProvider>
       </body>
     </html>

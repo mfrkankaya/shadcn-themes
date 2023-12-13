@@ -13,6 +13,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "geist": "^1.2.0",
+    "immer": "^10.0.3",
     "lucide-react": "^0.294.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",
@@ -22,7 +23,8 @@
     "react-use": "^17.4.2",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
-    "usehooks-ts": "^2.9.1"
+    "usehooks-ts": "^2.9.1",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
