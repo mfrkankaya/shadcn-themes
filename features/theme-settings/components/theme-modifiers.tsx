@@ -1,33 +1,24 @@
 "use client"
 
 import React from "react"
+import { useTheme } from "next-themes"
 
 import { colors } from "@/constants/colors"
-import { convertToTitleCase } from "@/lib/utils"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 import { CssVarColorPicker } from "./css-var-color-picker"
 
-interface Props {
-  theme: "light" | "dark"
-}
-
-export function ThemeModifiers({ theme }: Props) {
+export function ThemeModifiers() {
+  const { resolvedTheme } = useTheme()
+  const theme = resolvedTheme === "dark" ? "dark" : "light"
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{convertToTitleCase(theme)}</CardTitle>
-      </CardHeader>
-
-      <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-        {Object.keys(colors.light).map((currentKey) => (
-          <CssVarColorPicker
-            key={currentKey}
-            theme={theme}
-            varKey={currentKey as keyof typeof colors.light}
-          />
-        ))}
-      </CardContent>
-    </Card>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1 gap-y-2">
+      {Object.keys(colors.light).map((currentKey) => (
+        <CssVarColorPicker
+          key={currentKey}
+          theme={theme}
+          varKey={currentKey as keyof typeof colors.light}
+        />
+      ))}
+    </div>
   )
 }

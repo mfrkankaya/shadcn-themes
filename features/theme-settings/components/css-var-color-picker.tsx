@@ -32,7 +32,9 @@ export function CssVarColorPicker({ theme, varKey }: Props) {
           updateColor(`${theme}.${varKey}`, `${hsl[0]} ${hsl[1]}% ${hsl[2]}%`)
         }}
       />
-      <Label htmlFor={`${theme}-${varKey}`}>{convertToTitleCase(varKey)}</Label>
+      <Label className="flex-1" htmlFor={`${theme}-${varKey}`}>
+        {convertToTitleCase(varKey)}
+      </Label>
     </div>
   )
 }

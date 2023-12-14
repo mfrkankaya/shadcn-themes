@@ -19,7 +19,6 @@ import { Section } from "../section"
 export function DropdownMenuDemo() {
   return (
     <Section title="Dropdown Menu">
-      {" "}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline">Open</Button>
