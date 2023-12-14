@@ -59,7 +59,7 @@ export function NavigationMenuDemo() {
   return (
     <Section title="Navigation Menu">
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="flex flex-wrap gap-1 space-x-0">
           <NavigationMenuItem>
             <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
             <NavigationMenuContent>
