@@ -1,6 +1,8 @@
-import React, { Fragment } from "react"
+import React from "react"
 
-import { COMPONENT_DEMOS } from "@/constants/component-demos"
+import Masonry, { ResponsiveMasonry } from "@/lib/masonry"
+import { ClientOnly } from "@/components/client-only"
+import { AuthForm } from "@/components/demos/auth-form"
 import { ThemeSettings } from "@/features/theme-settings/theme-settings"
 
 export default function HomePage() {
@@ -8,10 +10,16 @@ export default function HomePage() {
     <>
       <ThemeSettings />
 
-      <div className="container py-32 flex flex-col gap-16">
-        {COMPONENT_DEMOS.map(({ name, component }) => (
-          <Fragment key={name}>{component}</Fragment>
-        ))}
+      <div className="container py-32">
+        <ClientOnly>
+          <ResponsiveMasonry
+            columnsCountBreakPoints={{ 0: 1, 768: 2, 1280: 3 }}
+          >
+            <Masonry gutter="2rem">
+              <AuthForm />
+            </Masonry>
+          </ResponsiveMasonry>
+        </ClientOnly>
       </div>
     </>
   )

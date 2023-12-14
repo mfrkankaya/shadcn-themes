@@ -31,8 +31,8 @@ export default function RootLayout({
           {children}
           <DevThemeToggler />
           <ThemeSync />
+          <Toaster />
         </ThemeProvider>
-        <Toaster />
       </body>
     </html>
   )
