@@ -5,9 +5,9 @@ import { GeistSans } from "geist/font/sans"
 
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
-import DevThemeToggler from "@/components/dev-theme-toggler"
+import { DevThemeToggler } from "@/components/dev-theme-toggler"
 import { ThemeProvider } from "@/components/theme-provider"
-import ThemeSync from "@/components/theme-sync"
+import { ThemeSync } from "@/components/theme-sync"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,7 +33,6 @@ export default function RootLayout({
           <ThemeSync />
         </ThemeProvider>
         <Toaster />
-
       </body>
     </html>
   )

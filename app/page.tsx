@@ -38,10 +38,12 @@ import { ToastDemo } from "@/components/demos/toast-demo"
 import { ToggleDemo } from "@/components/demos/toggle-demo"
 import { ToggleGroupDemo } from "@/components/demos/toggle-group-demo"
 import { TooltipDemo } from "@/components/demos/tooltip-demo"
+import { ThemeToggler } from "@/components/theme-toggler"
 
 export default function HomePage() {
   return (
     <div className="container pt-16 pb-32 flex flex-col gap-16">
+      <ThemeToggler />
       <AccordionDemo />
       <AlertDemo />
       <AlertDialogDemo />

@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 
 import { useThemeStore } from "@/store/theme-store"
 
-export default function ThemeSync() {
+export function ThemeSync() {
   const colors = useThemeStore((state) => state.colors)
   const { resolvedTheme } = useTheme()
 
