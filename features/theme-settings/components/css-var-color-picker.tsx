@@ -7,6 +7,7 @@ import { colors } from "@/constants/colors"
 import { convertCssVarToHSLNumbers, convertToTitleCase } from "@/lib/utils"
 import { useThemeStore } from "@/store/theme-store"
 import { ColorPicker } from "@/components/ui/color-picker"
+import { Label } from "@/components/ui/label"
 
 interface Props {
   theme: "light" | "dark"
@@ -24,13 +25,14 @@ export function CssVarColorPicker({ theme, varKey }: Props) {
   return (
     <div className="flex items-center gap-4">
       <ColorPicker
+        id={`${theme}-${varKey}`}
         value={`#${hex}`}
         onChange={(e) => {
           const hsl = convert.hex.hsl(e.target.value)
           updateColor(`${theme}.${varKey}`, `${hsl[0]} ${hsl[1]}% ${hsl[2]}%`)
         }}
       />
-      <div>{convertToTitleCase(varKey)}</div>
+      <Label htmlFor={`${theme}-${varKey}`}>{convertToTitleCase(varKey)}</Label>
     </div>
   )
 }
