@@ -51,7 +51,7 @@ export function AuthForm() {
 
       <CardContent>
         <Tabs defaultValue="register" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-2 mb-4">
             <TabsTrigger value="register">Register</TabsTrigger>
             <TabsTrigger value="login">Login</TabsTrigger>
           </TabsList>
@@ -212,7 +212,7 @@ function RegisterForm() {
             control={form.control}
             name="terms"
             render={({ field: { value, onChange, ...field } }) => (
-              <FormItem>
+              <FormItem className="mt-2">
                 <div className="flex items-center space-x-2">
                   <FormControl>
                     <Checkbox
