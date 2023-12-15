@@ -3,6 +3,7 @@ import React from "react"
 import Masonry, { ResponsiveMasonry } from "@/lib/masonry"
 import { ClientOnly } from "@/components/client-only"
 import { AuthForm } from "@/components/demos/auth-form"
+import { CalendarDemo } from "@/components/demos/calendar-demo"
 import { ThemeSettings } from "@/features/theme-settings/theme-settings"
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
           >
             <Masonry gutter="2rem">
               <AuthForm />
+              <CalendarDemo />
             </Masonry>
           </ResponsiveMasonry>
         </ClientOnly>
