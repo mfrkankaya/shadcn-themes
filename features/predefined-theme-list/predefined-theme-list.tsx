@@ -20,7 +20,7 @@ export function PredefinedThemeList() {
 
 function PredefinedThemeItem({ colors }: (typeof THEMES)[0]) {
   const { resolvedTheme } = useTheme()
-  const { setColors, colors: currentColors } = useThemeStore()
+  const { setColors } = useThemeStore()
 
   const currentTheme = resolvedTheme as "light" | "dark"
 
@@ -33,9 +33,7 @@ function PredefinedThemeItem({ colors }: (typeof THEMES)[0]) {
 
   return (
     <button
-      onClick={() =>
-        setColors({ ...currentColors, [currentTheme]: colors[currentTheme] })
-      }
+      onClick={() => setColors(colors)}
       className="w-16 h-16 flex flex-wrap overflow-hidden rounded-lg"
     >
       <div className="w-8 h-8" style={{ backgroundColor: primary }} />

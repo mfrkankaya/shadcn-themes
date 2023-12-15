@@ -42,11 +42,10 @@ const example = {
     "--ring": "240 4.9% 83.9%",
   },
 }
-
 export const THEMES = [
   {
-    id: "example",
-    name: "Example",
+    id: 'example',
+    name: 'Example',
     colors: example,
-  },
+  }
 ]

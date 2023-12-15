@@ -32,3 +32,11 @@ export function convertCssVarToHex(cssVar: string) {
   const [h, s, l] = convertCssVarToHSLNumbers(cssVar)
   return `#${convert.hsl.hex([h, s, l])}`
 }
+
+export function camelToDash(inputString: string) {
+  // Replace uppercase letters with '-'+lowercase equivalent
+  const result = inputString.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()
+
+  // If the string starts with a capital letter, convert the first character to lowercase
+  return result.charAt(0) === "-" ? result.slice(1) : result
+}
