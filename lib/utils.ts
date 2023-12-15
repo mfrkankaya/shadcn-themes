@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx"
+import convert from "color-convert"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -25,4 +26,9 @@ export function convertCssVarToHSLNumbers(
 ): [number, number, number] {
   const [h, s, l] = cssVar.split(" ") // 0 0% 0%
   return [+h.replace("%", ""), +s.replace("%", ""), +l.replace("%", "")]
+}
+
+export function convertCssVarToHex(cssVar: string) {
+  const [h, s, l] = convertCssVarToHSLNumbers(cssVar)
+  return `#${convert.hsl.hex([h, s, l])}`
 }
