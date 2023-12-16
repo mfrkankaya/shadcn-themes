@@ -7,7 +7,6 @@ import { useToggle } from "react-use"
 
 import { Button } from "@/components/ui/button"
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible"
-import { Toggle } from "@/components/ui/toggle"
 import { ThemeToggler } from "@/components/theme-toggler"
 
 import { ResetButton } from "./components/reset-button"

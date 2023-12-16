@@ -3,16 +3,13 @@ import React from "react"
 import { COMPONENT_DEMOS } from "@/constants/component-demos"
 import Masonry, { ResponsiveMasonry } from "@/lib/masonry"
 import { ClientOnly } from "@/components/client-only"
-import { PredefinedThemeList } from "@/features/predefined-theme-list"
-import { ThemeSettings } from "@/features/theme-settings/theme-settings"
+import { ThemeGeneratorForm } from "@/features/theme-generator-form"
 
 export default function HomePage() {
   return (
     <>
-      <ThemeSettings />
-
-      <div className="container py-32">
-        <PredefinedThemeList />
+      <div className="container pt-16 pb-32">
+        <ThemeGeneratorForm />
 
         <ClientOnly>
           <ResponsiveMasonry

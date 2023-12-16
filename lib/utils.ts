@@ -62,44 +62,38 @@ export function createTheme({
   } as const
 }
 
-function darkenOrLightenColor(theme: "light" | "dark", color: Color) {
+function darkenOrLightenColor(theme: "light" | "dark", color: Color): Color {
+  const RATIO = 0.05
+
   if (theme === "light") {
-    if (color.isLight()) {
-      return darkenOrLightenColor(theme, color.darken(0.6))
-    }
-
-    return color
+    return color.isLight()
+      ? darkenOrLightenColor(theme, color.darken(RATIO))
+      : color
   }
 
-  if (color.isDark()) {
-    return darkenOrLightenColor(theme, color.lighten(0.6))
-  }
-
-  return color
+  return color.isDark()
+    ? darkenOrLightenColor(theme, color.lighten(RATIO))
+    : color
 }
 
 function getSecondaryColor(color: Color) {
-  return color.rotate(180)
-  // const rand = Math.random()
+  // return color.rotate(180)
+  const rand = Math.random()
 
-  // if (rand < 0.5) return color.rotate(180)
-  // if (rand < 0.2) return color.rotate(90)
-  // if (rand < 0.3) return color.rotate(-90)
-  // if (rand < 0.4) return color.rotate(45)
-  // if (rand < 0.5) return color.rotate(-45)
-  // if (rand < 0.6) return color.rotate(135)
-  // if (rand < 0.7) return color.rotate(-135)
-  // if (rand < 0.8) return color.rotate(30)
-  // if (rand < 0.9) return color.rotate(-30)
-  // return color.rotate(60)
+  if (rand < 0.5) return color.rotate(180)
+  if (rand < 0.2) return color.rotate(90)
+  if (rand < 0.3) return color.rotate(-90)
+  if (rand < 0.4) return color.rotate(45)
+  if (rand < 0.5) return color.rotate(-45)
+  if (rand < 0.6) return color.rotate(135)
+  if (rand < 0.7) return color.rotate(-135)
+  if (rand < 0.8) return color.rotate(30)
+  if (rand < 0.9) return color.rotate(-30)
+  return color.rotate(60)
 }
 
-function createLightThemeByHue(hue: number) {
-  // const color = Color(`hsl(${hue}, 100%, 50%)`)
-  // const primaryColor = darkenOrLightenColor("light", color)
-  // const secondaryColor = darkenOrLightenColor("light", getSecondaryColor(color))
-  const primaryColor = Color(`hsl(${hue}, 100%, 50%)`)
-  const secondaryColor = getSecondaryColor(primaryColor)
+function createLightThemeByColor(color: Color, secondaryColor: Color) {
+  const primaryColor = darkenOrLightenColor("light", color)
   const destructive = primaryColor.hue(0)
 
   return createTheme({
@@ -121,10 +115,8 @@ function createLightThemeByHue(hue: number) {
   }).light
 }
 
-function createDarkThemeByHue(hue: number) {
-  const color = Color(`hsl(${hue}, 100%, 50%)`)
-  const primaryColor = darkenOrLightenColor("dark", color)
-  const secondaryColor = darkenOrLightenColor("dark", getSecondaryColor(color))
+function createDarkThemeByColor(color: Color, secondaryColor: Color) {
+  const primaryColor = color
   const destructive = primaryColor.hue(0)
 
   return createTheme({
@@ -132,7 +124,7 @@ function createDarkThemeByHue(hue: number) {
     dark: {
       "--primary": convertHexToCssVar(primaryColor.hex()),
       "--primary-foreground": convertHexToCssVar(
-        primaryColor.isDark() ? "#ffffff" : "#000000"
+        color.isDark() ? "#ffffff" : "#000000"
       ),
       "--secondary": convertHexToCssVar(secondaryColor.hex()),
       "--secondary-foreground": convertHexToCssVar(
@@ -146,13 +138,27 @@ function createDarkThemeByHue(hue: number) {
   }).dark
 }
 
-export function createThemeByHue(hue: number) {
+export function createThemeByHue(hue: number, s: number, l: number) {
+  const color = Color(`hsl(${hue}, ${s}%, ${l}%)`)
+  const secondaryColor = getSecondaryColor(color)
+
   return createTheme({
-    light: createLightThemeByHue(hue),
-    dark: createDarkThemeByHue(hue),
+    light: createLightThemeByColor(color, secondaryColor),
+    dark: createDarkThemeByColor(color, secondaryColor),
   })
 }
 
-export function createRandomThemeByHue() {
-  return createThemeByHue(Math.floor(Math.random() * 360))
+export function createRandomTheme() {
+  const hue = Math.floor(Math.random() * 360)
+  const s = Math.random() < 0.5 ? 100 : Math.floor(40 + Math.random() * 40)
+  const l = Math.random() < 0.5 ? 50 : Math.floor(40 + Math.random() * 20)
+
+  return createThemeByHue(hue, s, 50)
+}
+
+export function isValidColor(color: string) {
+  try {
+    Color(color)
+    return true
+  } catch (error) {}
 }
