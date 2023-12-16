@@ -156,5 +156,3 @@ export function createThemeByHue(hue: number) {
 export function createRandomThemeByHue() {
   return createThemeByHue(Math.floor(Math.random() * 360))
 }
-
-// console.log(createThemeByHue(150))
