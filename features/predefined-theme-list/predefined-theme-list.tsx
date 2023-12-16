@@ -3,7 +3,7 @@
 import React from "react"
 import { useTheme } from "next-themes"
 
-import { convertCssVarToHex } from "@/lib/utils"
+import { convertCssVarToHex, createRandomThemeByHue } from "@/lib/utils"
 import { useThemeStore } from "@/store/theme-store"
 
 import { THEMES } from "./themes"
@@ -33,7 +33,7 @@ function PredefinedThemeItem({ colors }: (typeof THEMES)[0]) {
 
   return (
     <button
-      onClick={() => setColors(colors)}
+      onClick={() => setColors(createRandomThemeByHue())}
       className="w-16 h-16 flex flex-wrap overflow-hidden rounded-lg"
     >
       <div className="w-8 h-8" style={{ backgroundColor: primary }} />

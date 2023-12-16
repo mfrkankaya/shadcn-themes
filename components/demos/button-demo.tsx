@@ -14,6 +14,21 @@ export function ButtonDemo() {
         <Button variant="ghost">Ghost</Button>
         <Button variant="link">Link</Button>
         <Button disabled>Disabled</Button>
+        <Button variant="secondary" disabled>
+          Secondary Disabled
+        </Button>
+        <Button variant="destructive" disabled>
+          Destructive Disabled
+        </Button>
+        <Button variant="outline" disabled>
+          Outline Disabled
+        </Button>
+        <Button variant="ghost" disabled>
+          Ghost Disabled
+        </Button>
+        <Button variant="link" disabled>
+          Link Disabled
+        </Button>
       </div>
     </Section>
   )
