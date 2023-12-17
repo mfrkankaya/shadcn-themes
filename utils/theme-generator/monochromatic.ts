@@ -87,8 +87,8 @@ function generateDarkTheme({
   const background = primary.saturationl(30).lightness(10)
   const foreground = background.lightness(98)
   const card = background
-    .saturationl(background.saturationl() + 5)
-    .lightness(background.lightness() + 5)
+    .saturationl(background.saturationl() + 3)
+    .lightness(background.lightness() + 3)
   const cardForeground = foreground
   const secondary = primary.saturationl(40).lightness(20)
   const secondaryForeground = foreground
@@ -102,7 +102,7 @@ function generateDarkTheme({
   const destructiveForeground = destructive.isDark()
     ? Color("#ffffff")
     : destructive.darken(0.8)
-  const border = card.lightness(card.lightness() + 8)
+  const border = card.lightness(card.lightness() + 5)
   const input = background.lightness(card.lightness() + 10)
   const ring = input.lightness(input.lightness() + 10)
 
