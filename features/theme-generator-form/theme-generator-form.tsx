@@ -15,7 +15,6 @@ export function ThemeGeneratorForm() {
       <AutoForm
         formSchema={ThemeGeneratorSchema}
         onSubmit={(v) => {
-          console.log(v)
           setColors(generateTheme(v))
         }}
         fieldConfig={{
