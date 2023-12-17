@@ -3,7 +3,7 @@ import Color from "color"
 import convert from "color-convert"
 import { twMerge } from "tailwind-merge"
 
-import { colors } from "@/constants/colors"
+import { colors, ColorVariables } from "@/constants/colors"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -39,6 +39,17 @@ export function convertCssVarToHex(cssVar: string) {
 export function convertHexToCssVar(hex: string) {
   const [h, s, l] = convert.hex.hsl(hex)
   return `${h} ${s}% ${l}%`
+}
+
+export function convertAllHexToCssVar(obj: ColorVariables) {
+  const result = { ...obj }
+
+  for (const k in obj) {
+    const key = k as keyof ColorVariables
+    result[key] = convertHexToCssVar(result[key])
+  }
+
+  return result
 }
 
 export function camelToDash(inputString: string) {

@@ -46,3 +46,5 @@ export const colors = {
   light,
   dark,
 } as const
+
+export type ColorVariables = typeof colors.light
