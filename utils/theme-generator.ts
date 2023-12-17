@@ -34,54 +34,100 @@ function generateMonochromaticTheme({
 
   return {
     light: {
-      "--background": convertHexToCssVar(primary.light.lightness(95).hex()),
-      "--foreground": convertHexToCssVar(primary.light.lightness(15).hex()),
-      "--card": convertHexToCssVar(primary.light.lightness(92).hex()),
+      "--background": convertHexToCssVar(primary.light.lightness(98).hex()),
+      "--foreground": convertHexToCssVar(primary.light.lightness(10).hex()),
+      "--card": convertHexToCssVar(primary.light.lightness(95).hex()),
       "--card-foreground": convertHexToCssVar(
-        primary.light.lightness(15).hex()
+        primary.light.lightness(10).hex()
       ),
-      "--popover": convertHexToCssVar(primary.light.lightness(94).hex()),
+      "--popover": convertHexToCssVar(primary.light.lightness(95).hex()),
       "--popover-foreground": convertHexToCssVar(
-        primary.light.lightness(15).hex()
+        primary.light.lightness(10).hex()
       ),
       "--primary": convertHexToCssVar(primary.light.hex()),
       "--primary-foreground": convertHexToCssVar(
         primary.light.isDark() ? "#ffffff" : primary.light.darken(0.8).hex()
       ),
-      "--secondary": "240 4.8% 95.9%",
-      "--secondary-foreground": "240 5.9% 10%",
-      "--muted": "240 4.8% 95.9%",
-      "--muted-foreground": "240 3.8% 46.1%",
-      "--accent": "240 4.8% 95.9%",
-      "--accent-foreground": "240 5.9% 10%",
+      "--secondary": convertHexToCssVar(primary.light.lightness(93).hex()),
+      "--secondary-foreground": convertHexToCssVar(
+        primary.light.lightness(15).hex()
+      ),
+      "--muted": convertHexToCssVar(
+        primary.light.saturationl(20).lightness(80).hex()
+      ),
+      "--muted-foreground": convertHexToCssVar(
+        primary.light.lightness(15).hex()
+      ),
+      "--accent": convertHexToCssVar(
+        primary.light.saturationl(30).lightness(90).hex()
+      ),
+      "--accent-foreground": convertHexToCssVar(
+        primary.light.lightness(15).hex()
+      ),
       "--destructive": "0 84.2% 60.2%",
       "--destructive-foreground": "0 0% 98%",
-      "--border": "240 5.9% 90%",
-      "--input": "240 5.9% 90%",
-      "--ring": "240 5.9% 10%",
+      "--border": convertHexToCssVar(
+        primary.light.saturationl(50).lightness(90).hex()
+      ),
+      "--input": convertHexToCssVar(
+        primary.light.saturationl(100).lightness(80).hex()
+      ),
+      "--ring": convertHexToCssVar(
+        primary.light.saturationl(50).lightness(90).hex()
+      ),
     },
     dark: {
-      "--background": convertHexToCssVar(primary.dark.lightness(5).hex()),
-      "--foreground": "0 0% 98%",
-      "--card": "240 10% 3.9%",
-      "--card-foreground": "0 0% 98%",
-      "--popover": "240 10% 3.9%",
-      "--popover-foreground": "0 0% 98%",
+      "--background": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(10).hex()
+      ),
+      "--foreground": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(98).hex()
+      ),
+      "--card": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(13).hex()
+      ),
+      "--card-foreground": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(98).hex()
+      ),
+      "--popover": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(13).hex()
+      ),
+      "--popover-foreground": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(98).hex()
+      ),
       "--primary": convertHexToCssVar(primary.dark.hex()),
       "--primary-foreground": convertHexToCssVar(
         primary.dark.isDark() ? "#ffffff" : primary.dark.darken(0.8).hex()
       ),
-      "--secondary": "240 3.7% 15.9%",
-      "--secondary-foreground": "0 0% 98%",
-      "--muted": "240 3.7% 15.9%",
-      "--muted-foreground": "240 5% 64.9%",
-      "--accent": "240 3.7% 15.9%",
-      "--accent-foreground": "0 0% 98%",
-      "--destructive": "0 62.8% 30.6%",
+      "--secondary": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(15).hex()
+      ),
+      "--secondary-foreground": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(98).hex()
+      ),
+      "--muted": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(20).hex()
+      ),
+      "--muted-foreground": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(98).hex()
+      ),
+      "--accent": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(30).hex()
+      ),
+      "--accent-foreground": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(98).hex()
+      ),
+      "--destructive": "0 84.2% 60.2%",
       "--destructive-foreground": "0 0% 98%",
-      "--border": "240 3.7% 15.9%",
-      "--input": "240 3.7% 15.9%",
-      "--ring": "240 4.9% 83.9%",
+      "--border": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(20).hex()
+      ),
+      "--input": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(25).hex()
+      ),
+      "--ring": convertHexToCssVar(
+        primary.dark.saturationl(50).lightness(20).hex()
+      ),
     },
   } as const
 }
