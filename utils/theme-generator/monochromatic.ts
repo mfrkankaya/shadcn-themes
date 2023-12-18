@@ -21,7 +21,7 @@ function generateLightTheme({
   const primary = optimizePrimaryColorForLightMode(Color(primaryColorString))
   const primaryForeground = primary.isDark()
     ? Color("#ffffff")
-    : primary.darken(0.8)
+    : primary.darken(0.9)
   const background = primary.saturationl(20).lightness(99)
   const foreground = background.lightness(10)
   const card = background.lightness(background.lightness() - 2.5)
