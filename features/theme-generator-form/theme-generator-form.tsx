@@ -15,10 +15,10 @@ import { Input } from "@/components/ui/input"
 import CopyButton from "./components/copy-button"
 
 export function ThemeGeneratorForm() {
-  const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#000fd2")
+  const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#0003ff")
   const [colorInput, setColorInput] = useLocalStorage(
     "PRIMARY_COLOR_INPUT",
-    "#000fd2"
+    "#0003ff"
   )
   const [backgroundStyle, setBackgroundStyle] = useLocalStorage<
     ThemeGeneratorParams["backgroundStyle"]
