@@ -12,6 +12,8 @@ import { useThemeStore } from "@/store/theme-store"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
+import CopyButton from "./components/copy-button"
+
 export function ThemeGeneratorForm() {
   const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#000fd2")
   const [colorInput, setColorInput] = useLocalStorage(
@@ -29,7 +31,7 @@ export function ThemeGeneratorForm() {
   }, [color, setColors, backgroundStyle])
 
   return (
-    <div className="mt-8 mb-16 flex flex-wrap gap-8">
+    <div className="mt-8 mb-16 flex flex-wrap gap-8 items-end">
       <div className="flex flex-col w-fit gap-2">
         <HexColorPicker
           color={color}
@@ -90,6 +92,8 @@ export function ThemeGeneratorForm() {
           </Button>
         </div>
       </div>
+
+      <CopyButton />
     </div>
   )
 }

@@ -97,19 +97,21 @@ function generateDarkTheme({
 
   const background =
     backgroundStyle === "black"
-      ? Color("#000000")
+      ? primary.saturationl(0).lightness(0)
       : backgroundStyle === "gray"
         ? primary.saturationl(0).lightness(5)
         : backgroundStyle === "grayish"
-          ? primary.saturationl(5).lightness(5)
+          ? primary.saturationl(6).lightness(6)
           : backgroundStyle === "slightly-saturated"
             ? primary.saturationl(7.5).lightness(7.5)
             : primary.saturationl(10).lightness(10)
 
   const foreground = background.lightness(98)
   const card = background
-    .saturationl(background.saturationl() + 4)
-    .lightness(background.lightness() + 4)
+    .saturationl(
+      background.saturationl() + (backgroundStyle === "black" ? 6.5 : 4)
+    )
+    .lightness(background.lightness() + (backgroundStyle === "black" ? 6.5 : 4))
   const cardForeground = foreground
   const secondary = primary.saturationl(20).lightness(20)
   const secondaryForeground = foreground
