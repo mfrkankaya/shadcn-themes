@@ -96,7 +96,7 @@ function generateDarkTheme({
     ? Color("#ffffff")
     : primary.darken(0.8)
 
-  const background = primary.saturationl(10).lightness(5)
+  const background = primary.saturationl(5).lightness(5)
   const foreground = background.lightness(98)
   const card = background
     .saturationl(background.saturationl() + 4)
