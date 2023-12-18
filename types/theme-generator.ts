@@ -6,9 +6,13 @@ export const ThemeGeneratorSchema = z.object({
   primaryColor: z
     .string({ required_error: "Primary color is required." })
     .refine(isValidColor, "Primary color is not valid."),
-  colorTheory: z
-    .enum(["analogous", "monochromatic", "triad", "complementary"])
-    .default("monochromatic"),
+  backgroundStyle: z.enum([
+    "black",
+    "gray",
+    "grayish",
+    "slightly-saturated",
+    "saturated",
+  ]),
 })
 
 export type ThemeGeneratorParams = z.infer<typeof ThemeGeneratorSchema>

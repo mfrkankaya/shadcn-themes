@@ -4,8 +4,6 @@ import { ThemeGeneratorParams } from "@/types/theme-generator"
 import { ColorVariables } from "@/constants/colors"
 import { convertAllHexToCssVar, convertCssVarToHex } from "@/lib/utils"
 
-type CommonParams = Omit<ThemeGeneratorParams, "colorTheory">
-
 function optimizePrimaryColorForLightMode(color: Color) {
   const saturation = color.saturationl()
   const lightness = color.lightness()
@@ -17,7 +15,7 @@ function optimizePrimaryColorForLightMode(color: Color) {
 
 function generateLightTheme({
   primaryColor: primaryColorString,
-}: CommonParams): ColorVariables {
+}: ThemeGeneratorParams): ColorVariables {
   const primary = optimizePrimaryColorForLightMode(Color(primaryColorString))
   const primaryForeground = primary.isDark()
     ? Color("#ffffff")
@@ -90,13 +88,24 @@ function optimizePrimaryColorForDarkMode(color: Color) {
 
 function generateDarkTheme({
   primaryColor: primaryColorString,
-}: CommonParams): ColorVariables {
+  backgroundStyle,
+}: ThemeGeneratorParams): ColorVariables {
   const primary = optimizePrimaryColorForDarkMode(Color(primaryColorString))
   const primaryForeground = primary.isDark()
     ? Color("#ffffff")
     : primary.darken(0.8)
 
-  const background = primary.saturationl(5).lightness(5)
+  const background =
+    backgroundStyle === "black"
+      ? Color("#000000")
+      : backgroundStyle === "gray"
+        ? primary.saturationl(0).lightness(5)
+        : backgroundStyle === "grayish"
+          ? primary.saturationl(5).lightness(5)
+          : backgroundStyle === "slightly-saturated"
+            ? primary.saturationl(7.5).lightness(7.5)
+            : primary.saturationl(10).lightness(10)
+
   const foreground = background.lightness(98)
   const card = background
     .saturationl(background.saturationl() + 4)
@@ -151,7 +160,7 @@ function generateDarkTheme({
   }
 }
 
-export function generateMonochromaticTheme(params: CommonParams) {
+export function generateMonochromaticTheme(params: ThemeGeneratorParams) {
   return {
     light: convertAllHexToCssVar(generateLightTheme(params)),
     dark: convertAllHexToCssVar(generateDarkTheme(params)),
