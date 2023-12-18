@@ -9,9 +9,9 @@ export default function HomePage() {
   return (
     <>
       <div className="container pt-16 pb-32">
-        <ThemeGeneratorForm />
-
         <ClientOnly>
+          <ThemeGeneratorForm />
+
           <ResponsiveMasonry
             columnsCountBreakPoints={{ 0: 1, 768: 2, 1280: 3 }}
           >

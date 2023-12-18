@@ -3,7 +3,7 @@
 import React from "react"
 import Color from "color"
 import { HexColorPicker } from "react-colorful"
-import { useUpdateEffect } from "react-use"
+import { useLocalStorage, useUpdateEffect } from "react-use"
 
 import { ThemeGeneratorParams } from "@/types/theme-generator"
 import { isValidColor } from "@/lib/utils"
@@ -13,15 +13,18 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 export function ThemeGeneratorForm() {
-  const [color, setColor] = React.useState("#ffffff")
-  const [colorInput, setColorInput] = React.useState(color)
-  const [backgroundStyle, setBackgroundStyle] =
-    React.useState<ThemeGeneratorParams["backgroundStyle"]>(
-      "slightly-saturated"
-    )
+  const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#ffffff")
+  const [colorInput, setColorInput] = useLocalStorage(
+    "PRIMARY_COLOR_INPUT",
+    "#ffffff"
+  )
+  const [backgroundStyle, setBackgroundStyle] = useLocalStorage<
+    ThemeGeneratorParams["backgroundStyle"]
+  >("BACKGROUND_STYLE", "slightly-saturated")
   const setColors = useThemeStore((state) => state.setColors)
 
   useUpdateEffect(() => {
+    if (!color || !backgroundStyle) return
     setColors(generateTheme({ primaryColor: color, backgroundStyle }))
   }, [color, setColors, backgroundStyle])
 
