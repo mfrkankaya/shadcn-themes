@@ -13,10 +13,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 export function ThemeGeneratorForm() {
-  const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#ffffff")
+  const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#000fd2")
   const [colorInput, setColorInput] = useLocalStorage(
     "PRIMARY_COLOR_INPUT",
-    "#ffffff"
+    "#000fd2"
   )
   const [backgroundStyle, setBackgroundStyle] = useLocalStorage<
     ThemeGeneratorParams["backgroundStyle"]
