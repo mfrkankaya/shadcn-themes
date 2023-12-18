@@ -2,7 +2,7 @@ import Color from "color"
 
 import { ThemeGeneratorParams } from "@/types/theme-generator"
 import { ColorVariables } from "@/constants/colors"
-import { convertAllHexToCssVar } from "@/lib/utils"
+import { convertAllHexToCssVar, convertCssVarToHex } from "@/lib/utils"
 
 type CommonParams = Omit<ThemeGeneratorParams, "colorTheory">
 
@@ -22,23 +22,37 @@ function generateLightTheme({
   const primaryForeground = primary.isDark()
     ? Color("#ffffff")
     : primary.darken(0.9)
-  const background = primary.saturationl(20).lightness(99)
+  const background = primary.saturationl(10).lightness(100)
   const foreground = background.lightness(10)
-  const card = background.lightness(background.lightness() - 2.5)
+  const card = background
+    .saturationl(background.saturationl() + 5)
+    .lightness(background.lightness() - 2.5)
   const cardForeground = foreground
-  const secondary = primary.saturationl(30).lightness(93)
+  const secondary = card
+    .saturationl(card.saturationl() + 15)
+    .lightness(card.lightness() - 7.5)
   const secondaryForeground = foreground
-  const muted = card.lightness(card.lightness() - 5)
+  const muted = card
+    .saturationl(card.saturationl() + 5)
+    .lightness(card.lightness() - 2.5)
   const mutedForeground = foreground.lightness(40)
-  const accent = card.lightness(card.lightness() - 5)
+  const accent = card
+    .saturationl(card.saturationl() + 15)
+    .lightness(card.lightness() - 7.5)
   const accentForeground = foreground
-  const destructive = primary.hue(0)
-  const destructiveForeground = destructive.isDark()
-    ? Color("#ffffff")
-    : destructive.darken(0.8)
-  const border = card.lightness(card.lightness() - 4)
-  const input = background.lightness(card.lightness() - 5)
-  const ring = input.lightness(input.lightness() - 5)
+  // const destructive = primary.hue(0)
+  // const destructiveForeground = destructive.isDark()
+  //   ? Color("#ffffff")
+  //   : destructive.darken(0.8)
+  const border = card
+    .saturationl(card.saturationl() + 5)
+    .lightness(card.lightness() - 2.5)
+  const input = card
+    .saturationl(card.saturationl() + 10)
+    .lightness(card.lightness() - 5)
+  const ring = input
+    .saturationl(input.saturationl() + 10)
+    .lightness(input.lightness() - 5)
 
   return {
     "--background": background.hex(),
@@ -55,8 +69,10 @@ function generateLightTheme({
     "--muted-foreground": mutedForeground.hex(),
     "--accent": accent.hex(),
     "--accent-foreground": accentForeground.hex(),
-    "--destructive": destructive.hex(),
-    "--destructive-foreground": destructiveForeground.hex(),
+    // "--destructive": destructive.hex(),
+    // "--destructive-foreground": destructiveForeground.hex(),
+    "--destructive": convertCssVarToHex("0 84.2% 60.2%"),
+    "--destructive-foreground": convertCssVarToHex("0 0% 98%"),
     "--border": border.hex(),
     "--input": input.hex(),
     "--ring": ring.hex(),
@@ -80,27 +96,35 @@ function generateDarkTheme({
     ? Color("#ffffff")
     : primary.darken(0.8)
 
-  const background = primary.saturationl(20).lightness(10)
+  const background = primary.saturationl(10).lightness(5)
   const foreground = background.lightness(98)
   const card = background
-    .saturationl(background.saturationl() + 3)
-    .lightness(background.lightness() + 3)
+    .saturationl(background.saturationl() + 4)
+    .lightness(background.lightness() + 4)
   const cardForeground = foreground
-  const secondary = primary.saturationl(40).lightness(20)
+  const secondary = primary.saturationl(20).lightness(20)
   const secondaryForeground = foreground
   const muted = card
+    .saturationl(card.saturationl() + 4)
+    .lightness(card.lightness() + 4)
+  const mutedForeground = foreground.lightness(60)
+  const accent = card
+    .saturationl(card.saturationl() + 10)
+    .lightness(card.lightness() + 10)
+  const accentForeground = foreground
+  // const destructive = primary.hue(0)
+  // const destructiveForeground = destructive.isDark()
+  //   ? Color("#ffffff")
+  //   : destructive.darken(0.8)
+  const border = card
     .saturationl(card.saturationl() + 5)
     .lightness(card.lightness() + 5)
-  const mutedForeground = foreground.lightness(65)
-  const accent = card.lightness(card.lightness() + 15)
-  const accentForeground = foreground
-  const destructive = primary.hue(0)
-  const destructiveForeground = destructive.isDark()
-    ? Color("#ffffff")
-    : destructive.darken(0.8)
-  const border = card.lightness(card.lightness() + 5)
-  const input = background.lightness(card.lightness() + 10)
-  const ring = input.lightness(input.lightness() + 10)
+  const input = card
+    .saturationl(card.saturationl() + 5)
+    .lightness(card.lightness() + 5)
+  const ring = input
+    .saturationl(input.saturationl() + 5)
+    .lightness(input.lightness() + 5)
 
   return {
     "--background": background.hex(),
@@ -117,8 +141,10 @@ function generateDarkTheme({
     "--muted-foreground": mutedForeground.hex(),
     "--accent": accent.hex(),
     "--accent-foreground": accentForeground.hex(),
-    "--destructive": destructive.hex(),
-    "--destructive-foreground": destructiveForeground.hex(),
+    // "--destructive": destructive.hex(),
+    // "--destructive-foreground": destructiveForeground.hex(),
+    "--destructive": convertCssVarToHex("0 62.8% 30.6%"),
+    "--destructive-foreground": convertCssVarToHex("0 0% 98%"),
     "--border": border.hex(),
     "--input": input.hex(),
     "--ring": ring.hex(),
