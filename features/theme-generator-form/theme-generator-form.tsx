@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 import CopyButton from "./components/copy-button"
+import { DarkBgStyleSelector } from "./components/dark-bg-style-selector"
 
 export function ThemeGeneratorForm() {
   const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#0003ff")
@@ -54,56 +55,10 @@ export function ThemeGeneratorForm() {
 
         <div className="w-fit">
           <div className="font-semibold mb-2">Dark mode background style</div>
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-wrap gap-2">
-              <Button
-                className="flex-1"
-                variant={backgroundStyle === "black" ? "default" : "outline"}
-                onClick={() => setBackgroundStyle("black")}
-              >
-                Black
-              </Button>
-
-              <Button
-                className="flex-1"
-                variant={backgroundStyle === "gray" ? "default" : "outline"}
-                onClick={() => setBackgroundStyle("gray")}
-              >
-                Gray
-              </Button>
-
-              <Button
-                className="flex-1"
-                variant={backgroundStyle === "grayish" ? "default" : "outline"}
-                onClick={() => setBackgroundStyle("grayish")}
-              >
-                Grayish
-              </Button>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              <Button
-                className="flex-1"
-                variant={
-                  backgroundStyle === "slightly-saturated"
-                    ? "default"
-                    : "outline"
-                }
-                onClick={() => setBackgroundStyle("slightly-saturated")}
-              >
-                Slightly Saturated
-              </Button>
-
-              <Button
-                className="flex-1"
-                variant={
-                  backgroundStyle === "saturated" ? "default" : "outline"
-                }
-                onClick={() => setBackgroundStyle("saturated")}
-              >
-                Saturated
-              </Button>
-            </div>
-          </div>
+          <DarkBgStyleSelector
+            value={backgroundStyle!}
+            onValueChange={setBackgroundStyle}
+          />
         </div>
       </div>
 
