@@ -30,7 +30,7 @@ export default function CopyButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Copy code</Button>
+        <Button className="w-full sm:w-auto">Copy code</Button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl">
         <DialogHeader>

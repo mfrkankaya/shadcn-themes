@@ -29,7 +29,7 @@ const buttonVariants = cva(
 
 export function DarkBgStyleSelector({ value, onValueChange }: Props) {
   return (
-    <Card className="w-fit overflow-hidden shadow-none border-collapse">
+    <Card className="overflow-hidden shadow-none border-collapse">
       <div className="grid grid-cols-1 sm:grid-cols-3">
         <button
           className={cn(buttonVariants({ active: value === "black" }))}
