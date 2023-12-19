@@ -1,7 +1,9 @@
 import React from "react"
 import Link from "next/link"
+import { BsGithub, BsTwitterX } from "react-icons/bs"
 
 import { ThemeToggler } from "./theme-toggler"
+import { Button } from "./ui/button"
 
 export default function Appheader() {
   return (
@@ -11,7 +13,17 @@ export default function Appheader() {
           shadcn/ui themes
         </Link>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5 -mr-2">
+          <Button asChild variant="ghost" size="icon">
+            <a href="https://github.com/mfrkankaya" target="_blank">
+              <BsGithub size={16} />
+            </a>
+          </Button>
+          <Button asChild variant="ghost" size="icon">
+            <a href="https://twitter.com/mfrkankaya" target="_blank">
+              <BsTwitterX size={16} />
+            </a>
+          </Button>
           <ThemeToggler />
         </div>
       </div>
