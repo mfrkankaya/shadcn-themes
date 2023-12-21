@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { useLocalStorage, useUpdateEffect } from "react-use"
+import { useDebounce, useLocalStorage } from "react-use"
 
 import { ThemeGeneratorParams } from "@/types/theme-generator"
 import { generateTheme } from "@/utils/theme-generator"
@@ -26,10 +26,14 @@ export function ThemeGeneratorForm() {
   >("BACKGROUND_STYLE", "slightly-saturated")
   const setColors = useThemeStore((state) => state.setColors)
 
-  useUpdateEffect(() => {
-    if (!color || !backgroundStyle) return
-    setColors(generateTheme({ primaryColor: color, backgroundStyle }))
-  }, [color, setColors, backgroundStyle])
+  useDebounce(
+    () => {
+      if (!color || !backgroundStyle) return
+      setColors(generateTheme({ primaryColor: color, backgroundStyle }))
+    },
+    100,
+    [color, backgroundStyle]
+  )
 
   return (
     <Card>
