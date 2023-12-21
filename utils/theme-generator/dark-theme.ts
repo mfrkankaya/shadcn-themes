@@ -50,10 +50,6 @@ export function generateDarkTheme({
     .saturationl(card.saturationl() + 10)
     .lightness(card.lightness() + 10)
   const accentForeground = foreground
-  // const destructive = primary.hue(0)
-  // const destructiveForeground = destructive.isDark()
-  //   ? Color("#ffffff")
-  //   : destructive.darken(0.8)
   const border = card
     .saturationl(card.saturationl() + 5)
     .lightness(card.lightness() + 5)
