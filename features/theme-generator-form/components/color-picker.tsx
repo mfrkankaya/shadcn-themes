@@ -16,7 +16,7 @@ interface Props {
 export default function ColorPicker({ value, onChange }: Props) {
   const [colorInput, setColorInput] = useLocalStorage(
     "PRIMARY_COLOR",
-    "#0003ff"
+    "#3b82f6"
   )
 
   return (

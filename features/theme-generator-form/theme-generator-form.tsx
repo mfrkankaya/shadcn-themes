@@ -19,7 +19,7 @@ import CopyButton from "./components/copy-button"
 import { DarkBgStyleSelector } from "./components/dark-bg-style-selector"
 
 export function ThemeGeneratorForm() {
-  const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#0003ff")
+  const [color, setColor] = useLocalStorage("PRIMARY_COLOR", "#3b82f6")
 
   const [backgroundStyle, setBackgroundStyle] = useLocalStorage<
     ThemeGeneratorParams["backgroundStyle"]
