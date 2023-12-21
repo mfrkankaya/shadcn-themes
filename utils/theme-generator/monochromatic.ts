@@ -9,8 +9,8 @@ function optimizePrimaryColorForLightMode(color: Color) {
   const lightness = color.lightness()
 
   return color
-    .saturationl(saturation > 60 ? 60 : saturation < 40 ? 40 : saturation)
-    .lightness(lightness > 60 ? 60 : lightness < 40 ? 40 : lightness)
+    .saturationl(50 + (saturation - 50) / 2)
+    .lightness(50 + (lightness - 50) / 2)
 }
 
 function generateLightTheme({
@@ -82,8 +82,8 @@ function optimizePrimaryColorForDarkMode(color: Color) {
   const lightness = color.lightness()
 
   return color
-    .saturationl(saturation > 50 ? 50 : saturation < 30 ? 30 : saturation)
-    .lightness(lightness > 50 ? 50 : lightness < 30 ? 30 : lightness)
+    .saturationl(50 + (saturation-50) / 2)
+    .lightness(50 + (lightness - 50) / 2)
 }
 
 function generateDarkTheme({
