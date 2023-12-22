@@ -52,7 +52,8 @@ const sheetVariants = cva(
 interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
     VariantProps<typeof sheetVariants> {
-  overlayBlur?: boolean
+  disableBlur?: boolean
+  transparentOverlay?: boolean
 }
 
 const SheetContent = React.forwardRef<
@@ -60,11 +61,23 @@ const SheetContent = React.forwardRef<
   SheetContentProps
 >(
   (
-    { side = "right", className, children, overlayBlur = true, ...props },
+    {
+      side = "right",
+      className,
+      children,
+      disableBlur = false,
+      transparentOverlay = false,
+      ...props
+    },
     ref
   ) => (
     <SheetPortal>
-      <SheetOverlay className={cn({ "backdrop-blur-none": !overlayBlur })} />
+      <SheetOverlay
+        className={cn({
+          "backdrop-blur-none": disableBlur,
+          "bg-transparent": transparentOverlay,
+        })}
+      />
       <SheetPrimitive.Content
         ref={ref}
         className={cn(sheetVariants({ side }), className)}

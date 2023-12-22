@@ -69,7 +69,8 @@ export default function ColorPicker({ value, onChange }: Props) {
         <SheetContent
           className="gap-6"
           side={isMobile ? "bottom" : "right"}
-          overlayBlur={false}
+          disableBlur
+          transparentOverlay
         >
           <SheetHeader>
             <SheetTitle>Fine tune</SheetTitle>
