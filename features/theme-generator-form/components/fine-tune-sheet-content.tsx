@@ -3,7 +3,6 @@
 import React from "react"
 
 import { useThemeStore } from "@/store/theme-store"
-import { FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Label } from "@/components/ui/label"
 import {
   Select,
@@ -12,84 +11,92 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import {
-  OptionList,
-  OptionListItem,
-  OptionListItemDescription,
-  OptionListItemTitle,
-} from "@/components/option-list"
 
 const DARK_MODE_BG_STYLE_OPTIONS = [
   {
     value: "black",
     title: "Black",
-    description: "Pure black",
   },
   {
     value: "gray",
     title: "Gray",
-    description: "Almost black",
   },
   {
     value: "grayish",
     title: "Grayish",
-    description: "Gray with a little primary color",
   },
   {
     value: "slightly-saturated",
     title: "Slightly Saturated",
-    description: "Primary color slightly visible on background",
   },
   {
     value: "saturated",
     title: "Saturated",
-    description: "Primary color visible on background",
+  },
+]
+
+const LIGHT_MODE_BG_STYLE_OPTIONS = [
+  {
+    value: "white",
+    title: "White",
+  },
+  {
+    value: "grayish",
+    title: "Grayish",
+  },
+  {
+    value: "slightly-saturated",
+    title: "Slightly Saturated",
   },
 ]
 
 export function FineTuneSheetContent() {
   const darkModeBgStyle = useThemeStore((state) => state.darkModeBgStyle)
+  const lightModeBgStyle = useThemeStore((state) => state.lightModeBgStyle)
   const setFieldStore = useThemeStore((state) => state.setField)
 
   return (
     <>
-      <div>
-        <div className="flex flex-col space-y-2">
-          <Label className="block">Dark mode background style</Label>
-          <Select
-            value={darkModeBgStyle}
-            onValueChange={(v) =>
-              setFieldStore("darkModeBgStyle", v as typeof darkModeBgStyle)
-            }
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Background style" />
-            </SelectTrigger>
-            <SelectContent>
-              {DARK_MODE_BG_STYLE_OPTIONS.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.title}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        {/* <Label className="mb-2 ml-1 block">Dark mode background style</Label>
-        <OptionList
+      <div className="flex flex-col space-y-2">
+        <Label className="block">Dark mode background style</Label>
+        <Select
           value={darkModeBgStyle}
-          onChange={(v) =>
+          onValueChange={(v) =>
             setFieldStore("darkModeBgStyle", v as typeof darkModeBgStyle)
           }
         >
-          {DARK_MODE_BG_STYLE_OPTIONS.map((option) => (
-            <OptionListItem key={option.value} value={option.value}>
-              <OptionListItemTitle>{option.title}</OptionListItemTitle>
-              <OptionListItemDescription>
-                {option.description}
-              </OptionListItemDescription>
-            </OptionListItem>
-          ))}
-        </OptionList> */}
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Background style" />
+          </SelectTrigger>
+          <SelectContent>
+            {DARK_MODE_BG_STYLE_OPTIONS.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <Label className="block">Light mode background style</Label>
+        <Select
+          value={lightModeBgStyle}
+          onValueChange={(v) =>
+            setFieldStore("lightModeBgStyle", v as typeof lightModeBgStyle)
+          }
+        >
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Background style" />
+          </SelectTrigger>
+          <SelectContent>
+            {LIGHT_MODE_BG_STYLE_OPTIONS.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.title}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
     </>
   )

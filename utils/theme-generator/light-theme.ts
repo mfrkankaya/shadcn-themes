@@ -15,13 +15,19 @@ function optimizePrimaryColor(color: Color) {
 
 export function generateLightTheme({
   primaryColor: primaryColorString,
+  lightModeBgStyle,
 }: ThemeGeneratorParams): ColorVariables {
   const primary = optimizePrimaryColor(Color(primaryColorString))
   const primaryForeground = primary.isDark()
     ? Color("#ffffff")
     : primary.darken(0.9)
-  const background = primary.saturationl(10).lightness(100)
-  const foreground = background.lightness(10)
+  const background =
+    lightModeBgStyle === "white"
+      ? primary.saturationl(25).lightness(100)
+      : lightModeBgStyle === "grayish"
+        ? primary.saturationl(50).lightness(99)
+        : primary.saturationl(75).lightness(98)
+  const foreground = primary.saturationl(20).lightness(10)
   const card = background
     .saturationl(background.saturationl() + 5)
     .lightness(background.lightness() - 2.5)
