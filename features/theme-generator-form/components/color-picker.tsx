@@ -18,6 +18,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
+import CopyButton from "./copy-button"
 import { FineTuneSheetContent } from "./fine-tune-sheet-content"
 
 interface Props {
@@ -35,7 +36,7 @@ export default function ColorPicker({ value, onChange }: Props) {
   return (
     <div className="fixed bottom-4 inset-x-6 z-40 sm:w-full sm:relative sm:bottom-[unset] sm:inset-x-[unset] flex items-center">
       <label
-        className="absolute block w-7 h-7 left-4 rounded-full cursor-pointer overflow-hidden border"
+        className="absolute block w-9 h-9 left-3 rounded-full cursor-pointer overflow-hidden border"
         style={{ backgroundColor: value }}
       >
         <input
@@ -60,28 +61,31 @@ export default function ColorPicker({ value, onChange }: Props) {
         }}
       />
 
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="absolute right-4">
-            <SlidersHorizontal />
-          </Button>
-        </SheetTrigger>
-        <SheetContent
-          className="gap-6"
-          side={isMobile ? "bottom" : "right"}
-          disableBlur
-          transparentOverlay
-        >
-          <SheetHeader>
-            <SheetTitle>Fine tune</SheetTitle>
-            <SheetDescription>
-              Adjust options for a more personalized theme
-            </SheetDescription>
-          </SheetHeader>
+      <div className="absolute right-3 flex items-center gap-1">
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <SlidersHorizontal size={16} />
+            </Button>
+          </SheetTrigger>
+          <SheetContent
+            className="gap-6"
+            side={isMobile ? "bottom" : "right"}
+            disableBlur
+            transparentOverlay
+          >
+            <SheetHeader>
+              <SheetTitle>Fine tune</SheetTitle>
+              <SheetDescription>
+                Adjust options for a more personalized theme
+              </SheetDescription>
+            </SheetHeader>
 
-          <FineTuneSheetContent />
-        </SheetContent>
-      </Sheet>
+            <FineTuneSheetContent />
+          </SheetContent>
+        </Sheet>
+        <CopyButton />
+      </div>
     </div>
   )
 }

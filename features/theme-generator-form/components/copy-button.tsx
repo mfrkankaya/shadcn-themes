@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { Check, Copy } from "lucide-react"
+import { Check, Copy, CopyIcon } from "lucide-react"
 
 import { getCopyableCssVariables } from "@/lib/utils"
 import { useThemeStore } from "@/store/theme-store"
@@ -31,7 +31,9 @@ export default function CopyButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full sm:w-auto">Copy code</Button>
+        <Button size="icon" className="rounded-full">
+          <CopyIcon size={16} />
+        </Button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
