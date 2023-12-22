@@ -6,7 +6,7 @@ export const ThemeGeneratorSchema = z.object({
   primaryColor: z
     .string({ required_error: "Primary color is required." })
     .refine(isValidColor, "Primary color is not valid."),
-  backgroundStyle: z.enum([
+  darkModeBgStyle: z.enum([
     "black",
     "gray",
     "grayish",

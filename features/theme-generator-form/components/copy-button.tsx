@@ -5,6 +5,7 @@ import { Check, Copy } from "lucide-react"
 
 import { getCopyableCssVariables } from "@/lib/utils"
 import { useThemeStore } from "@/store/theme-store"
+import { useGeneratedColors } from "@/hooks/use-generated-colors"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -18,7 +19,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 
 export default function CopyButton() {
   const [isCopied, setIsCopied] = React.useState(false)
-  const colors = useThemeStore((state) => state.colors)
+  const colors = useGeneratedColors()
 
   function onCopy() {
     setIsCopied(true)

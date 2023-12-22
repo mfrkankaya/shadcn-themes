@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils"
 import { Card } from "@/components/ui/card"
 
 interface Props {
-  value: ThemeGeneratorParams["backgroundStyle"]
-  onValueChange: (value: ThemeGeneratorParams["backgroundStyle"]) => void
+  value: ThemeGeneratorParams["darkModeBgStyle"]
+  onValueChange: (value: ThemeGeneratorParams["darkModeBgStyle"]) => void
 }
 
 const buttonVariants = cva(
@@ -18,7 +18,8 @@ const buttonVariants = cva(
     variants: {
       active: {
         true: "bg-primary text-primary-foreground hover:bg-primary/90 border border-primary",
-        false: "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
+        false:
+          "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
       },
     },
     defaultVariants: {
