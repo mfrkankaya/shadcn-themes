@@ -16,6 +16,7 @@ function optimizePrimaryColor(color: Color) {
 export function generateLightTheme({
   primaryColor: primaryColorString,
   lightModeBgStyle,
+  lightModeCardSameBg,
 }: ThemeGeneratorParams): ColorVariables {
   const primary = optimizePrimaryColor(Color(primaryColorString))
   const primaryForeground = primary.isDark()
@@ -28,31 +29,33 @@ export function generateLightTheme({
         ? primary.saturationl(50).lightness(99)
         : primary.saturationl(75).lightness(98)
   const foreground = primary.saturationl(20).lightness(10)
-  const card = background
-    .saturationl(background.saturationl() + 5)
-    .lightness(background.lightness() - 2.5)
+  const card = lightModeCardSameBg
+    ? background
+    : background
+        .saturationl(background.saturationl() + 5)
+        .lightness(background.lightness() - 2.5)
   const cardForeground = foreground
   const secondary = card
-    .saturationl(card.saturationl() + 15)
-    .lightness(card.lightness() - 7.5)
+    .saturationl(card.saturationl() + (lightModeCardSameBg ? 20 : 15))
+    .lightness(card.lightness() - (lightModeCardSameBg ? 10 : 7.5))
   const secondaryForeground = foreground
   const muted = card
-    .saturationl(card.saturationl() + 5)
-    .lightness(card.lightness() - 2.5)
+    .saturationl(card.saturationl() + (lightModeCardSameBg ? 7.5 : 5))
+    .lightness(card.lightness() - (lightModeCardSameBg ? 5 : 2.5))
   const mutedForeground = foreground.lightness(40)
   const accent = card
-    .saturationl(card.saturationl() + 15)
-    .lightness(card.lightness() - 7.5)
+    .saturationl(card.saturationl() + (lightModeCardSameBg ? 20 : 15))
+    .lightness(card.lightness() - (lightModeCardSameBg ? 10 : 7.5))
   const accentForeground = foreground
   const border = card
-    .saturationl(card.saturationl() + 5)
-    .lightness(card.lightness() - 2.5)
+    .saturationl(card.saturationl() + (lightModeCardSameBg ? 10 : 5))
+    .lightness(card.lightness() - (lightModeCardSameBg ? 5 : 2.5))
   const input = card
-    .saturationl(card.saturationl() + 10)
-    .lightness(card.lightness() - 5)
+    .saturationl(card.saturationl() + (lightModeCardSameBg ? 15 : 10))
+    .lightness(card.lightness() - (lightModeCardSameBg ? 7.5 : 5))
   const ring = input
-    .saturationl(input.saturationl() + 10)
-    .lightness(input.lightness() - 5)
+    .saturationl(input.saturationl() + (lightModeCardSameBg ? 15 : 10))
+    .lightness(input.lightness() - (lightModeCardSameBg ? 7.5 : 5))
 
   return {
     "--background": background.hex(),

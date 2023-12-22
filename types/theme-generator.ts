@@ -14,6 +14,7 @@ export const ThemeGeneratorSchema = z.object({
     "saturated",
   ]),
   lightModeBgStyle: z.enum(["white", "grayish", "slightly-saturated"]),
+  lightModeCardSameBg: z.boolean(),
 })
 
 export type ThemeGeneratorParams = z.infer<typeof ThemeGeneratorSchema>

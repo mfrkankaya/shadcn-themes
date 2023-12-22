@@ -7,11 +7,19 @@ export function useGeneratedColors() {
   const color = useThemeStore((state) => state.color)
   const darkModeBgStyle = useThemeStore((state) => state.darkModeBgStyle)
   const lightModeBgStyle = useThemeStore((state) => state.lightModeBgStyle)
+  const lightModeCardSameBg = useThemeStore(
+    (state) => state.lightModeCardSameBg
+  )
 
   const colors = React.useMemo(
     () =>
-      generateTheme({ primaryColor: color, darkModeBgStyle, lightModeBgStyle }),
-    [color, darkModeBgStyle, lightModeBgStyle]
+      generateTheme({
+        primaryColor: color,
+        darkModeBgStyle,
+        lightModeBgStyle,
+        lightModeCardSameBg,
+      }),
+    [color, darkModeBgStyle, lightModeBgStyle, lightModeCardSameBg]
   )
 
   return colors
