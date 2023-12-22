@@ -90,7 +90,7 @@ export default function ColorPicker({ value, onChange }: Props) {
             transparentOverlay
           >
             <SheetHeader>
-              <SheetTitle>Fine tune</SheetTitle>
+              <SheetTitle>Magic touches</SheetTitle>
               <SheetDescription>
                 Adjust options for a more personalized theme
               </SheetDescription>
