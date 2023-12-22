@@ -21,7 +21,7 @@ export default function ColorPicker({ value, onChange }: Props) {
   return (
     <div className="relative w-full flex items-center">
       <label
-        className="absolute block w-7 h-7 left-4 rounded-full cursor-pointer overflow-hidden"
+        className="absolute block w-7 h-7 left-4 rounded-full cursor-pointer overflow-hidden border"
         style={{ backgroundColor: value }}
       >
         <input
@@ -36,7 +36,7 @@ export default function ColorPicker({ value, onChange }: Props) {
       </label>
 
       <Input
-        className="bg-background w-full h-14 pl-14 rounded-full"
+        className="bg-background w-full h-14 pl-14 rounded-full font-medium text-base"
         placeholder="Color"
         value={colorInput}
         onChange={(e) => {
@@ -46,23 +46,5 @@ export default function ColorPicker({ value, onChange }: Props) {
         }}
       />
     </div>
-    // <div className="flex flex-col gap-2">
-    //   <HexColorPicker
-    //     color={value}
-    //     onChange={(value) => {
-    //       onChange(value)
-    //       setColorInput(value)
-    //     }}
-    //   />
-    //   <Input
-    //     placeholder="Color"
-    //     value={colorInput}
-    //     onChange={(e) => {
-    //       setColorInput(e.target.value)
-    //       if (isValidColor(e.target.value))
-    //         onChange(Color(e.target.value).hex())
-    //     }}
-    //   />
-    // </div>
   )
 }
