@@ -32,8 +32,8 @@ export function generateLightTheme({
   const card = lightModeCardSameBg
     ? background
     : background
-        .saturationl(background.saturationl() + 5)
-        .lightness(background.lightness() - 2.5)
+        .saturationl(background.saturationl() + 7.5)
+        .lightness(background.lightness() - 1.5)
   const cardForeground = foreground
   const secondary = card
     .saturationl(card.saturationl() + (lightModeCardSameBg ? 20 : 15))

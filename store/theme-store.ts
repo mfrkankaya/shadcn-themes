@@ -19,7 +19,7 @@ export const useThemeStore = create<Store>()(
         color: "#3b82f6",
         lightModeCardSameBg: true,
         darkModeBgStyle: "slightly-saturated",
-        lightModeBgStyle: "grayish",
+        lightModeBgStyle: "white",
         setField: (field, value) => {
           set((state) => {
             state[field] = value
