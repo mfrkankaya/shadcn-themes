@@ -11,8 +11,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeSync } from "@/components/theme-sync"
 
 export const metadata: Metadata = {
-  title: "Shadcn/ui theme generator",
-  description: "Shadcn/ui theme generator",
+  title: "Generate Theme - Shadcn/UI Theme Generator",
+  description: "Theme generator for shadcn/ui components. Generate a theme for your app by selecting a color and copy-pasting the generated css variables.",
 }
 
 export default function RootLayout({

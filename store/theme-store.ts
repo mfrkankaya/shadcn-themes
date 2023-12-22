@@ -2,23 +2,13 @@ import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
 import { immer } from "zustand/middleware/immer"
 
+import { ThemeGeneratorParams } from "@/types/theme-generator"
 import { colors } from "@/constants/colors"
 
 type Store = {
   color: string
-  darkModeBgStyle:
-    | "black"
-    | "gray"
-    | "grayish"
-    | "slightly-saturated"
-    | "saturated"
-  lightModeBgStyle:
-    | "white"
-    | "gray"
-    | "grayish"
-    | "slightly-saturated"
-    | "saturated"
-
+  darkModeBgStyle: ThemeGeneratorParams["darkModeBgStyle"]
+  lightModeBgStyle: ThemeGeneratorParams["lightModeBgStyle"]
   setField<T extends keyof Store>(field: T, value: Store[T]): void
 }
 
