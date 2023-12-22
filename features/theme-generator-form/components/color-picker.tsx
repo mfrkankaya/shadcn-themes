@@ -2,10 +2,23 @@
 
 import React from "react"
 import Color from "color"
+import { SlidersHorizontal } from "lucide-react"
 import { useLocalStorage } from "react-use"
 
 import { isValidColor } from "@/lib/utils"
+import useBreakpoint from "@/hooks/use-breakpoint"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+
+import { FineTuneSheetContent } from "./fine-tune-sheet-content"
 
 interface Props {
   value: string
@@ -13,6 +26,7 @@ interface Props {
 }
 
 export default function ColorPicker({ value, onChange }: Props) {
+  const isMobile = useBreakpoint("sm", "down")
   const [colorInput, setColorInput] = useLocalStorage(
     "PRIMARY_COLOR_INPUT",
     value || "#3b82f6"
@@ -45,6 +59,22 @@ export default function ColorPicker({ value, onChange }: Props) {
             onChange(Color(e.target.value).hex())
         }}
       />
+
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" className="absolute right-4">
+            <SlidersHorizontal />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side={isMobile ? "bottom" : "right"}>
+          <SheetHeader>
+            <SheetTitle>Fine tune</SheetTitle>
+            <SheetDescription>Adjust the colors of your theme</SheetDescription>
+          </SheetHeader>
+
+          <FineTuneSheetContent />
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }
