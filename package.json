@@ -58,6 +58,7 @@
     "react-hook-form": "^7.49.2",
     "react-icons": "^4.12.0",
     "react-responsive-masonry": "^2.1.7",
+    "react-twc": "^1.0.1",
     "react-use": "^17.4.2",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",

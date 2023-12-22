@@ -8,7 +8,6 @@ import ColorPicker from "./components/color-picker"
 
 export function ThemeGeneratorForm() {
   const color = useThemeStore((state) => state.color)
-  const darkModeBgStyle = useThemeStore((state) => state.darkModeBgStyle)
   const setFieldStore = useThemeStore((state) => state.setField)
 
   return (

@@ -66,7 +66,7 @@ export default function ColorPicker({ value, onChange }: Props) {
             <SlidersHorizontal />
           </Button>
         </SheetTrigger>
-        <SheetContent side={isMobile ? "bottom" : "right"}>
+        <SheetContent className="gap-6" side={isMobile ? "bottom" : "right"} overlayBlur={false}>
           <SheetHeader>
             <SheetTitle>Fine tune</SheetTitle>
             <SheetDescription>Adjust the colors of your theme</SheetDescription>
