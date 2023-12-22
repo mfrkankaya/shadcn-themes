@@ -1,10 +1,9 @@
 "use client"
 
 import React from "react"
-import { Check, Copy, CopyIcon } from "lucide-react"
+import { CheckIcon, CopyIcon } from "lucide-react"
 
 import { getCopyableCssVariables } from "@/lib/utils"
-import { useThemeStore } from "@/store/theme-store"
 import { useGeneratedColors } from "@/hooks/use-generated-colors"
 import { Button } from "@/components/ui/button"
 import {
@@ -48,11 +47,7 @@ export default function CopyButton() {
             className="absolute right-4 top-4 gap-2"
             variant="secondary"
           >
-            {isCopied ? (
-              <Check width={16} height={16} />
-            ) : (
-              <Copy width={16} height={16} />
-            )}
+            {isCopied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
             <span>Copy</span>
           </Button>
           <pre className="text-sm p-4 leading-normal">
