@@ -10,7 +10,16 @@ export default function HomePage() {
     <>
       <div className="container pt-16 pb-32">
         <ClientOnly>
-          <div className="mt-4 mb-12">
+          <div className="my-12 flex flex-col items-center">
+            <div className="mx-auto mb-8 text-center">
+              <h1 className="font-bold text-4xl max-w-xs mx-auto">
+                Shadcn/UI Theme Generator
+              </h1>
+              <p className="max-w-md mx-auto mt-2 text-muted-foreground">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
+                cupiditate autem, aperiam ea, aliquid similique.
+              </p>
+            </div>
             <ThemeGeneratorForm />
           </div>
 

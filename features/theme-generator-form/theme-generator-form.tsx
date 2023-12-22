@@ -1,10 +1,7 @@
 "use client"
 
 import React from "react"
-import { useDebounce, useLocalStorage } from "react-use"
 
-import { ThemeGeneratorParams } from "@/types/theme-generator"
-import { generateTheme } from "@/utils/theme-generator"
 import { useThemeStore } from "@/store/theme-store"
 import {
   Card,
