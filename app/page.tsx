@@ -16,8 +16,8 @@ export default function HomePage() {
                 Shadcn/UI Theme Generator
               </h1>
               <p className="max-w-md mx-auto mt-2 text-muted-foreground">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
-                cupiditate autem, aperiam ea, aliquid similique.
+                Generate a theme for your app by selecting a color and
+                copy-pasting the generated css variables.
               </p>
             </div>
             <ThemeGeneratorForm />
