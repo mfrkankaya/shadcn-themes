@@ -34,7 +34,7 @@ export default function ColorPicker({ value, onChange }: Props) {
   )
 
   return (
-    <div className="fixed bottom-4 inset-x-6 z-40 sm:w-full sm:relative sm:bottom-[unset] sm:inset-x-[unset] flex items-center">
+    <div className="fixed bottom-8 inset-x-6 z-40 sm:w-full sm:relative sm:bottom-[unset] sm:inset-x-[unset] flex items-center">
       <label
         className="absolute block w-9 h-9 left-3 rounded-full cursor-pointer overflow-hidden border"
         style={{ backgroundColor: value }}
