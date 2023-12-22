@@ -3,7 +3,15 @@
 import React from "react"
 
 import { useThemeStore } from "@/store/theme-store"
+import { FormField, FormItem, FormLabel } from "@/components/ui/form"
 import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import {
   OptionList,
   OptionListItem,
@@ -46,7 +54,27 @@ export function FineTuneSheetContent() {
   return (
     <>
       <div>
-        <Label className="mb-2 ml-1 block">Dark mode background style</Label>
+        <div className="flex flex-col space-y-2">
+          <Label className="block">Dark mode background style</Label>
+          <Select
+            value={darkModeBgStyle}
+            onValueChange={(v) =>
+              setFieldStore("darkModeBgStyle", v as typeof darkModeBgStyle)
+            }
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Background style" />
+            </SelectTrigger>
+            <SelectContent>
+              {DARK_MODE_BG_STYLE_OPTIONS.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.title}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        {/* <Label className="mb-2 ml-1 block">Dark mode background style</Label>
         <OptionList
           value={darkModeBgStyle}
           onChange={(v) =>
@@ -61,7 +89,7 @@ export function FineTuneSheetContent() {
               </OptionListItemDescription>
             </OptionListItem>
           ))}
-        </OptionList>
+        </OptionList> */}
       </div>
     </>
   )
