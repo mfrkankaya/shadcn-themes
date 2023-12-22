@@ -17,6 +17,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 import CopyButton from "./copy-button"
 import { FineTuneSheetContent } from "./fine-tune-sheet-content"
@@ -63,11 +69,20 @@ export default function ColorPicker({ value, onChange }: Props) {
 
       <div className="absolute right-3 flex items-center gap-1">
         <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <SlidersHorizontal size={16} />
-            </Button>
-          </SheetTrigger>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <SlidersHorizontal size={16} />
+                  </Button>
+                </SheetTrigger>
+              </TooltipTrigger>
+              <TooltipContent>
+                <span>Detailed options</span>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <SheetContent
             className="gap-6"
             side={isMobile ? "bottom" : "right"}

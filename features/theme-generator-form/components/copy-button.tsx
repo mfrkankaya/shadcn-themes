@@ -15,6 +15,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export default function CopyButton() {
   const [isCopied, setIsCopied] = React.useState(false)
@@ -29,11 +35,20 @@ export default function CopyButton() {
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button size="icon" className="rounded-full">
-          <CopyIcon size={16} />
-        </Button>
-      </DialogTrigger>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <DialogTrigger asChild>
+              <Button size="icon" className="rounded-full">
+                <CopyIcon size={16} />
+              </Button>
+            </DialogTrigger>
+          </TooltipTrigger>
+          <TooltipContent>
+            <span>Copy colors</span>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Theme</DialogTitle>
