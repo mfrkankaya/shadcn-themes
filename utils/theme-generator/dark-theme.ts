@@ -16,11 +16,12 @@ function optimizePrimaryColor(color: Color) {
 export function generateDarkTheme({
   primaryColor: primaryColorString,
   darkModeBgStyle,
+  darkModeCardSameBg,
 }: ThemeGeneratorParams): ColorVariables {
   const primary = optimizePrimaryColor(Color(primaryColorString))
   const primaryForeground = primary.isDark()
     ? Color("#ffffff")
-    : primary.darken(0.8)
+    : primary.darken(0.9)
 
   const background =
     darkModeBgStyle === "black"
@@ -34,11 +35,15 @@ export function generateDarkTheme({
             : primary.saturationl(10).lightness(10)
 
   const foreground = background.lightness(98)
-  const card = background
-    .saturationl(
-      background.saturationl() + (darkModeBgStyle === "black" ? 6.5 : 4)
-    )
-    .lightness(background.lightness() + (darkModeBgStyle === "black" ? 6.5 : 4))
+  const card = darkModeCardSameBg
+    ? background
+    : background
+        .saturationl(
+          background.saturationl() + (darkModeBgStyle === "black" ? 6.5 : 4)
+        )
+        .lightness(
+          background.lightness() + (darkModeBgStyle === "black" ? 6.5 : 4)
+        )
   const cardForeground = foreground
   const secondary = primary.saturationl(20).lightness(20)
   const secondaryForeground = foreground

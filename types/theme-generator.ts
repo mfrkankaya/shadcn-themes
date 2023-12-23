@@ -6,6 +6,7 @@ export const ThemeGeneratorSchema = z.object({
   primaryColor: z
     .string({ required_error: "Primary color is required." })
     .refine(isValidColor, "Primary color is not valid."),
+  lightModeBgStyle: z.enum(["white", "grayish", "slightly-saturated"]),
   darkModeBgStyle: z.enum([
     "black",
     "gray",
@@ -13,8 +14,8 @@ export const ThemeGeneratorSchema = z.object({
     "slightly-saturated",
     "saturated",
   ]),
-  lightModeBgStyle: z.enum(["white", "grayish", "slightly-saturated"]),
   lightModeCardSameBg: z.boolean(),
+  darkModeCardSameBg: z.boolean(),
 })
 
 export type ThemeGeneratorParams = z.infer<typeof ThemeGeneratorSchema>

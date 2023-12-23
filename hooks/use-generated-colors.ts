@@ -10,6 +10,7 @@ export function useGeneratedColors() {
   const lightModeCardSameBg = useThemeStore(
     (state) => state.lightModeCardSameBg
   )
+  const darkModeCardSameBg = useThemeStore((state) => state.darkModeCardSameBg)
 
   const colors = React.useMemo(
     () =>
@@ -18,8 +19,15 @@ export function useGeneratedColors() {
         darkModeBgStyle,
         lightModeBgStyle,
         lightModeCardSameBg,
+        darkModeCardSameBg,
       }),
-    [color, darkModeBgStyle, lightModeBgStyle, lightModeCardSameBg]
+    [
+      color,
+      darkModeBgStyle,
+      lightModeBgStyle,
+      lightModeCardSameBg,
+      darkModeCardSameBg,
+    ]
   )
 
   return colors

@@ -55,6 +55,7 @@ export function FineTuneSheetContent() {
   const lightModeCardSameBg = useThemeStore(
     (state) => state.lightModeCardSameBg
   )
+  const darkModeCardSameBg = useThemeStore((state) => state.darkModeCardSameBg)
   const darkModeBgStyle = useThemeStore((state) => state.darkModeBgStyle)
   const lightModeBgStyle = useThemeStore((state) => state.lightModeBgStyle)
   const setFieldStore = useThemeStore((state) => state.setField)
@@ -111,6 +112,17 @@ export function FineTuneSheetContent() {
           id="lightModeCardsBg"
           checked={lightModeCardSameBg}
           onCheckedChange={(v) => setFieldStore("lightModeCardSameBg", v)}
+        />
+      </div>
+
+      <div className="flex items-center justify-between gap-4">
+        <Label htmlFor="darkModeCardsBg">
+          Use background color for cards (Dark mode)
+        </Label>
+        <Switch
+          id="darkModeCardsBg"
+          checked={darkModeCardSameBg}
+          onCheckedChange={(v) => setFieldStore("darkModeCardSameBg", v)}
         />
       </div>
     </>
