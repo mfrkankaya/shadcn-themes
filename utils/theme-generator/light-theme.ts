@@ -4,13 +4,25 @@ import { ThemeGeneratorParams } from "@/types/theme-generator"
 import { ColorVariables } from "@/constants/colors"
 import { convertCssVarToHex } from "@/lib/utils"
 
-function optimizePrimaryColor(color: Color) {
+function optimizePrimaryColor(color: Color, shouldOptimize: boolean) {
   const saturation = color.saturationl()
   const lightness = color.lightness()
 
-  return color
+  let myColor = color
     .saturationl(50 + (saturation - 50) / 2)
     .lightness(50 + (lightness - 50) / 2)
+
+  if (shouldOptimize) {
+    if (myColor.lightness() < 60 && myColor.lightness() > 40) {
+      myColor = myColor.lightness(40)
+    }
+
+    if (myColor.isLight()) {
+      myColor.saturationl(myColor.saturationl() - 10)
+    }
+  }
+
+  return myColor
 }
 
 export function generateLightTheme({
@@ -18,8 +30,12 @@ export function generateLightTheme({
   lightModeBgStyle,
   lightModeCardSameBg,
   lightModePrimaryForeground,
+  lightModeOptimizePrimaryColor,
 }: ThemeGeneratorParams): ColorVariables {
-  const primary = optimizePrimaryColor(Color(color))
+  const primary = optimizePrimaryColor(
+    Color(color),
+    lightModeOptimizePrimaryColor
+  )
   const primaryForeground =
     lightModePrimaryForeground === "auto"
       ? primary.isDark()
