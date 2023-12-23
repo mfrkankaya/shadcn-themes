@@ -256,7 +256,7 @@ function LightModeSettings() {
 }
 
 export function FineTuneSheetContent() {
-  const { resolvedTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
 
   return (
     <>
@@ -265,11 +265,19 @@ export function FineTuneSheetContent() {
         className="w-full space-y-6"
       >
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="dark" className="flex items-center gap-1.5">
+          <TabsTrigger
+            onClick={() => setTheme("dark")}
+            value="dark"
+            className="flex items-center gap-1.5"
+          >
             <BsMoonStarsFill />
             <span>Dark</span>
           </TabsTrigger>
-          <TabsTrigger value="light" className="flex items-center gap-1.5">
+          <TabsTrigger
+            onClick={() => setTheme("light")}
+            value="light"
+            className="flex items-center gap-1.5"
+          >
             <BsSunFill />
             <span>Light</span>
           </TabsTrigger>
