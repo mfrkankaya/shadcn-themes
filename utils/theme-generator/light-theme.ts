@@ -27,7 +27,7 @@ export function generateLightTheme({
         : primary.darken(0.9)
       : lightModePrimaryForeground === "white"
         ? Color("#ffffff")
-        : Color("#000000")
+        : primary.darken(0.9)
   const background =
     lightModeBgStyle === "white"
       ? primary.saturationl(25).lightness(100)

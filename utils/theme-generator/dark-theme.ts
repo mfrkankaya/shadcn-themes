@@ -27,7 +27,7 @@ export function generateDarkTheme({
         : primary.darken(0.9)
       : darkModePrimaryForeground === "white"
         ? Color("#ffffff")
-        : Color("#000000")
+        : primary.darken(0.9)
 
   const background =
     darkModeBgStyle === "black"
