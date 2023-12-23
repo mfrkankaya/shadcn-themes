@@ -14,14 +14,20 @@ function optimizePrimaryColor(color: Color) {
 }
 
 export function generateDarkTheme({
-  primaryColor: primaryColorString,
+  color,
   darkModeBgStyle,
   darkModeCardSameBg,
+  darkModePrimaryForeground,
 }: ThemeGeneratorParams): ColorVariables {
-  const primary = optimizePrimaryColor(Color(primaryColorString))
-  const primaryForeground = primary.isDark()
-    ? Color("#ffffff")
-    : primary.darken(0.9)
+  const primary = optimizePrimaryColor(Color(color))
+  const primaryForeground =
+    darkModePrimaryForeground === "auto"
+      ? primary.isDark()
+        ? Color("#ffffff")
+        : primary.darken(0.9)
+      : darkModePrimaryForeground === "white"
+        ? Color("#ffffff")
+        : Color("#000000")
 
   const background =
     darkModeBgStyle === "black"
@@ -80,8 +86,6 @@ export function generateDarkTheme({
     "--muted-foreground": mutedForeground.hex(),
     "--accent": accent.hex(),
     "--accent-foreground": accentForeground.hex(),
-    // "--destructive": destructive.hex(),
-    // "--destructive-foreground": destructiveForeground.hex(),
     "--destructive": convertCssVarToHex("0 62.8% 30.6%"),
     "--destructive-foreground": convertCssVarToHex("0 0% 98%"),
     "--border": border.hex(),

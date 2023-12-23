@@ -14,14 +14,20 @@ function optimizePrimaryColor(color: Color) {
 }
 
 export function generateLightTheme({
-  primaryColor: primaryColorString,
+  color,
   lightModeBgStyle,
   lightModeCardSameBg,
+  lightModePrimaryForeground,
 }: ThemeGeneratorParams): ColorVariables {
-  const primary = optimizePrimaryColor(Color(primaryColorString))
-  const primaryForeground = primary.isDark()
-    ? Color("#ffffff")
-    : primary.darken(0.9)
+  const primary = optimizePrimaryColor(Color(color))
+  const primaryForeground =
+    lightModePrimaryForeground === "auto"
+      ? primary.isDark()
+        ? Color("#ffffff")
+        : primary.darken(0.9)
+      : lightModePrimaryForeground === "white"
+        ? Color("#ffffff")
+        : Color("#000000")
   const background =
     lightModeBgStyle === "white"
       ? primary.saturationl(25).lightness(100)
@@ -72,8 +78,6 @@ export function generateLightTheme({
     "--muted-foreground": mutedForeground.hex(),
     "--accent": accent.hex(),
     "--accent-foreground": accentForeground.hex(),
-    // "--destructive": destructive.hex(),
-    // "--destructive-foreground": destructiveForeground.hex(),
     "--destructive": convertCssVarToHex("0 84.2% 60.2%"),
     "--destructive-foreground": convertCssVarToHex("0 0% 98%"),
     "--border": border.hex(),

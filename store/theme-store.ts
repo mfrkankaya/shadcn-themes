@@ -4,12 +4,7 @@ import { immer } from "zustand/middleware/immer"
 
 import { ThemeGeneratorParams } from "@/types/theme-generator"
 
-type Store = {
-  color: string
-  lightModeCardSameBg: boolean
-  darkModeCardSameBg: boolean
-  darkModeBgStyle: ThemeGeneratorParams["darkModeBgStyle"]
-  lightModeBgStyle: ThemeGeneratorParams["lightModeBgStyle"]
+type Store = ThemeGeneratorParams & {
   setField<T extends keyof Store>(field: T, value: Store[T]): void
 }
 
@@ -18,15 +13,22 @@ export const useThemeStore = create<Store>()(
     persist(
       (set) => ({
         color: "#3b82f6",
-        lightModeCardSameBg: true,
-        darkModeCardSameBg: false,
-        darkModeBgStyle: "slightly-saturated",
-        lightModeBgStyle: "white",
+
         setField: (field, value) => {
           set((state) => {
             state[field] = value
           })
         },
+
+        lightModeCardSameBg: true,
+        lightModeBgStyle: "white",
+        lightModePrimaryForeground: "auto",
+        lightModeOptimizePrimaryColor: true,
+
+        darkModeCardSameBg: false,
+        darkModeBgStyle: "slightly-saturated",
+        darkModePrimaryForeground: "auto",
+        darkModeOptimizePrimaryColor: true,
       }),
       {
         name: "theme-storage",

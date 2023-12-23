@@ -6,6 +6,7 @@ import { SlidersHorizontal } from "lucide-react"
 import { useLocalStorage } from "react-use"
 
 import { isValidColor } from "@/lib/utils"
+// import { useThemeStore } from "@/store/theme-store"
 import useBreakpoint from "@/hooks/use-breakpoint"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -33,6 +34,7 @@ interface Props {
 }
 
 export default function ColorPicker({ value, onChange }: Props) {
+  // const setFieldStore = useThemeStore((state) => state.setField)
   const isMobile = useBreakpoint("sm", "down")
   const [colorInput, setColorInput] = useLocalStorage(
     "PRIMARY_COLOR_INPUT",
@@ -52,6 +54,8 @@ export default function ColorPicker({ value, onChange }: Props) {
           onChange={(e) => {
             onChange(e.target.value)
             setColorInput(e.target.value)
+            // setFieldStore("darkModePrimaryForeground", "auto")
+            // setFieldStore("lightModePrimaryForeground", "auto")
           }}
         />
       </label>
@@ -62,6 +66,8 @@ export default function ColorPicker({ value, onChange }: Props) {
         value={colorInput}
         onChange={(e) => {
           setColorInput(e.target.value)
+          // setFieldStore("darkModePrimaryForeground", "auto")
+          // setFieldStore("lightModePrimaryForeground", "auto")
           if (isValidColor(e.target.value))
             onChange(Color(e.target.value).hex())
         }}
