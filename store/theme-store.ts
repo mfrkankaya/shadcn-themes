@@ -26,7 +26,7 @@ export const useThemeStore = create<Store>()(
         lightModeOptimizePrimaryColor: true,
 
         darkModeCardSameBg: false,
-        darkModeBgStyle: "slightly-saturated",
+        darkModeBgStyle: "grayish",
         darkModePrimaryForeground: "auto",
         darkModeOptimizePrimaryColor: true,
       }),

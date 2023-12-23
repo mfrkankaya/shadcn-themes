@@ -1,10 +1,12 @@
 "use client"
 
 import React from "react"
+import { ResetIcon } from "@radix-ui/react-icons"
 import { useTheme } from "next-themes"
 import { BsMoonStarsFill, BsSunFill } from "react-icons/bs"
 
 import { useThemeStore } from "@/store/theme-store"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -136,6 +138,20 @@ function DarkModeSettings() {
           }
         />
       </div>
+
+      <Button
+        onClick={() => {
+          setFieldStore("darkModeBgStyle", "grayish")
+          setFieldStore("darkModePrimaryForeground", "auto")
+          setFieldStore("darkModeCardSameBg", false)
+          setFieldStore("darkModeOptimizePrimaryColor", true)
+        }}
+        className="ml-auto flex"
+        variant="ghost"
+        size="icon"
+      >
+        <ResetIcon />
+      </Button>
     </TabsContent>
   )
 }
@@ -221,6 +237,20 @@ function LightModeSettings() {
           }
         />
       </div>
+
+      <Button
+        onClick={() => {
+          setFieldStore("lightModeBgStyle", "white")
+          setFieldStore("lightModePrimaryForeground", "auto")
+          setFieldStore("lightModeCardSameBg", true)
+          setFieldStore("lightModeOptimizePrimaryColor", true)
+        }}
+        className="ml-auto flex"
+        variant="ghost"
+        size="icon"
+      >
+        <ResetIcon />
+      </Button>
     </TabsContent>
   )
 }
