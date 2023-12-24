@@ -144,7 +144,7 @@ function DarkModeSettings() {
           setFieldStore("darkModeBgStyle", "grayish")
           setFieldStore("darkModePrimaryForeground", "auto")
           setFieldStore("darkModeCardSameBg", false)
-          setFieldStore("darkModeOptimizePrimaryColor", true)
+          setFieldStore("darkModeOptimizePrimaryColor", false)
         }}
         className="ml-auto flex"
         variant="ghost"
@@ -243,7 +243,7 @@ function LightModeSettings() {
           setFieldStore("lightModeBgStyle", "white")
           setFieldStore("lightModePrimaryForeground", "auto")
           setFieldStore("lightModeCardSameBg", true)
-          setFieldStore("lightModeOptimizePrimaryColor", true)
+          setFieldStore("lightModeOptimizePrimaryColor", false)
         }}
         className="ml-auto flex"
         variant="ghost"
