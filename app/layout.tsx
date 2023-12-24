@@ -1,6 +1,7 @@
 import "./globals.css"
 
 import type { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/react"
 import { GeistSans } from "geist/font/sans"
 
 import { cn } from "@/lib/utils"
@@ -36,6 +37,7 @@ export default function RootLayout({
           <ThemeSync />
           <Toaster />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
