@@ -126,7 +126,7 @@ function DarkModeSettings() {
         />
       </div>
 
-      <div className="flex items-center justify-between gap-4">
+      {/* <div className="flex items-center justify-between gap-4">
         <Label htmlFor="darkModeOptimizePrimaryColor">
           Optimize primary color
         </Label>
@@ -137,7 +137,7 @@ function DarkModeSettings() {
             setFieldStore("darkModeOptimizePrimaryColor", v)
           }
         />
-      </div>
+      </div> */}
 
       <Button
         onClick={() => {
@@ -225,7 +225,7 @@ function LightModeSettings() {
         />
       </div>
 
-      <div className="flex items-center justify-between gap-4">
+      {/* <div className="flex items-center justify-between gap-4">
         <Label htmlFor="lightModeOptimizePrimaryColor">
           Optimize primary color
         </Label>
@@ -236,7 +236,7 @@ function LightModeSettings() {
             setFieldStore("lightModeOptimizePrimaryColor", v)
           }
         />
-      </div>
+      </div> */}
 
       <Button
         onClick={() => {

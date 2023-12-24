@@ -23,12 +23,12 @@ export const useThemeStore = create<Store>()(
         lightModeCardSameBg: true,
         lightModeBgStyle: "white",
         lightModePrimaryForeground: "auto",
-        lightModeOptimizePrimaryColor: true,
+        lightModeOptimizePrimaryColor: false,
 
         darkModeCardSameBg: false,
         darkModeBgStyle: "grayish",
         darkModePrimaryForeground: "auto",
-        darkModeOptimizePrimaryColor: true,
+        darkModeOptimizePrimaryColor: false,
       }),
       {
         name: "theme-storage",
