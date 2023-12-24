@@ -9,6 +9,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+declare global {
+  interface Window {
+    dataLayer: any[]
+  }
+}
+
+export function gtag(...args: any[]) {
+  window.dataLayer = window?.dataLayer || []
+  window.dataLayer.push(args)
+}
+
 export function convertCssVarToHSLNumbers(
   cssVar: string
 ): [number, number, number] {

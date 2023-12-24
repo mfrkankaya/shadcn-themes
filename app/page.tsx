@@ -1,9 +1,19 @@
 import React from "react"
+import { useEffectOnce } from "react-use"
 
+import { gtag } from "@/lib/utils"
 import { ExampleHome } from "@/components/examples/example-home"
 import { ThemeGeneratorForm } from "@/features/theme-generator-form"
 
 export default function HomePage() {
+  useEffectOnce(() => {
+    gtag("event", "page_view", {
+      page_title: "Home",
+      page_location: "/",
+      page_path: "/",
+    })
+  })
+
   return (
     <>
       <div className="container pt-16 pb-32">
