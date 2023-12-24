@@ -1,12 +1,14 @@
 "use client"
 
+import ReactGA from "react-ga"
 import { useEffectOnce } from "react-use"
 
-import { gtag } from "@/lib/utils"
+import { GTAG_ID } from "@/constants/config"
 
-export function Gtag({ data }: { data: any[] }) {
+export function GtagPageView() {
   useEffectOnce(() => {
-    gtag(data)
+    ReactGA.initialize(GTAG_ID)
+    ReactGA.pageview(window.location.pathname + window.location.search)
   })
 
   return null
