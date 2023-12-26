@@ -2,12 +2,18 @@
 
 import React from "react"
 
-export function ClientOnly({ children }: { children: React.ReactNode }) {
+export function ClientOnly({
+  children,
+  fallback = null,
+}: {
+  children: React.ReactNode
+  fallback?: React.ReactNode
+}) {
   const [hasMounted, setHasMounted] = React.useState(false)
 
   React.useEffect(() => {
     setHasMounted(true)
   }, [])
 
-  return hasMounted ? <>{children}</> : null
+  return hasMounted ? <>{children}</> : fallback
 }

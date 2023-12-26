@@ -21,14 +21,10 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ClientOnly>
-            <ThemeGeneratorForm />
-          </ClientOnly>
+          <ThemeGeneratorForm />
         </div>
 
-        <ClientOnly>
-          <ExampleHome />
-        </ClientOnly>
+        <ExampleHome />
       </div>
     </>
   )
