@@ -3,7 +3,7 @@ import Color from "color"
 import convert from "color-convert"
 import { twMerge } from "tailwind-merge"
 
-import { ColorVariables } from "@/constants/colors"
+import { ColorVariables } from "@/types/colors"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))

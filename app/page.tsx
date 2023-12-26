@@ -2,7 +2,7 @@ import React from "react"
 
 import { ExampleHome } from "@/components/examples/example-home"
 import { GtagPageView } from "@/components/gtag"
-import { ThemeGeneratorForm } from "@/features/theme-generator-form"
+import ThemeGeneratorForm from "@/components/theme-generator-form"
 
 export default function HomePage() {
   return (
@@ -19,6 +19,7 @@ export default function HomePage() {
               copy-pasting the generated css variables.
             </p>
           </div>
+
           <ThemeGeneratorForm />
         </div>
 

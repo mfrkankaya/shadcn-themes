@@ -39,8 +39,9 @@ export default function CopyButton() {
         <Tooltip>
           <TooltipTrigger>
             <DialogTrigger asChild>
-              <Button size="icon" className="rounded-full">
+              <Button className="rounded-full space-x-2">
                 <CopyIcon size={16} />
+                <span>Copy colors</span>
               </Button>
             </DialogTrigger>
           </TooltipTrigger>
