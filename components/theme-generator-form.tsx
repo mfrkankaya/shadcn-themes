@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { SlidersHorizontal } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { useColorStore, useColorStoreSetter } from "@/store/color-store"
@@ -8,11 +9,14 @@ import { useColorStore, useColorStoreSetter } from "@/store/color-store"
 import { ClientOnly } from "./client-only"
 import { ColorPicker } from "./color-picker"
 import CopyButton from "./copy-button"
+import { ExtraOptions } from "./extra-options"
+import { Button } from "./ui/button"
 
 export default function ThemeGeneratorForm() {
   const setFieldStore = useColorStoreSetter()
   const lightColor = useColorStore((state) => state.light.color)
   const darkColor = useColorStore((state) => state.dark.color)
+  const isOptionsExpanded = useColorStore((state) => state.isOptionsExpanded)
   const { resolvedTheme, setTheme } = useTheme()
 
   return (
@@ -38,9 +42,19 @@ export default function ThemeGeneratorForm() {
         </ClientOnly>
       </div>
 
-      <div className="mx-auto">
+      <div className="mx-auto flex items-center gap-4">
         <CopyButton />
+        <Button
+          variant="secondary"
+          className="rounded-full gap-2"
+          onClick={() => setFieldStore("isOptionsExpanded", !isOptionsExpanded)}
+        >
+          <SlidersHorizontal size={16} />
+          <span>{isOptionsExpanded ? "Hide" : "Show"} options</span>
+        </Button>
       </div>
+
+      <ExtraOptions />
     </div>
   )
 }

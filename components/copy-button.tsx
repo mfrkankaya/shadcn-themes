@@ -36,7 +36,7 @@ export default function CopyButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="rounded-full space-x-2">
+        <Button className="rounded-full gap-2">
           <CopyIcon size={16} />
           <span>Copy colors</span>
         </Button>
