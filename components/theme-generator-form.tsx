@@ -31,7 +31,6 @@ export default function ThemeGeneratorForm() {
           onChange={(v) => {
             if (resolvedTheme !== "dark") setTheme("dark")
             setFieldStore("darkColor", v)
-            setFieldStore("darkColor", v)
           }}
         />
       </div>

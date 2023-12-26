@@ -1,5 +1,6 @@
 import React from "react"
 
+import { ClientOnly } from "@/components/client-only"
 import { ExampleHome } from "@/components/examples/example-home"
 import { GtagPageView } from "@/components/gtag"
 import ThemeGeneratorForm from "@/components/theme-generator-form"
@@ -20,10 +21,14 @@ export default function HomePage() {
             </p>
           </div>
 
-          <ThemeGeneratorForm />
+          <ClientOnly>
+            <ThemeGeneratorForm />
+          </ClientOnly>
         </div>
 
-        <ExampleHome />
+        <ClientOnly>
+          <ExampleHome />
+        </ClientOnly>
       </div>
     </>
   )
