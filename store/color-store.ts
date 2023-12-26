@@ -6,8 +6,12 @@ import { immer } from "zustand/middleware/immer"
 import { GetPathValueType, Leaves } from "@/types/helpers"
 
 export type ColorStore = {
-  lightColor: string
-  darkColor: string
+  light: {
+    color: string
+  }
+  dark: {
+    color: string
+  }
 }
 
 type Actions = {
@@ -23,8 +27,12 @@ export const useColorStore = create<Store>()(
   immer(
     persist(
       (set) => ({
-        lightColor: "#9a16ca",
-        darkColor: "#3348e6",
+        light: {
+          color: "#9a16ca",
+        },
+        dark: {
+          color: "#3348e6",
+        },
 
         setField: (field, value) => {
           set((state) => {

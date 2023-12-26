@@ -11,8 +11,8 @@ import CopyButton from "./copy-button"
 
 export default function ThemeGeneratorForm() {
   const setFieldStore = useColorStoreSetter()
-  const lightColor = useColorStore((state) => state.lightColor)
-  const darkColor = useColorStore((state) => state.darkColor)
+  const lightColor = useColorStore((state) => state.light.color)
+  const darkColor = useColorStore((state) => state.dark.color)
   const { resolvedTheme, setTheme } = useTheme()
 
   return (
@@ -24,7 +24,7 @@ export default function ThemeGeneratorForm() {
             value={lightColor}
             onChange={(v) => {
               if (resolvedTheme !== "light") setTheme("light")
-              setFieldStore("lightColor", v)
+              setFieldStore("light.color", v)
             }}
           />
           <ColorPicker
@@ -32,7 +32,7 @@ export default function ThemeGeneratorForm() {
             value={darkColor}
             onChange={(v) => {
               if (resolvedTheme !== "dark") setTheme("dark")
-              setFieldStore("darkColor", v)
+              setFieldStore("dark.color", v)
             }}
           />
         </ClientOnly>
