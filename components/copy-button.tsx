@@ -35,21 +35,12 @@ export default function CopyButton() {
 
   return (
     <Dialog>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger>
-            <DialogTrigger asChild>
-              <Button className="rounded-full space-x-2">
-                <CopyIcon size={16} />
-                <span>Copy colors</span>
-              </Button>
-            </DialogTrigger>
-          </TooltipTrigger>
-          <TooltipContent>
-            <span>Copy colors</span>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <DialogTrigger asChild>
+        <Button className="rounded-full space-x-2">
+          <CopyIcon size={16} />
+          <span>Copy colors</span>
+        </Button>
+      </DialogTrigger>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>Theme</DialogTitle>
