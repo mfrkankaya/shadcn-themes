@@ -15,7 +15,7 @@ export default function Appheader() {
 
         <div className="flex items-center gap-0.5 -mr-2">
           <Button asChild variant="ghost" size="icon">
-            <a href="https://github.com/mfrkankaya" target="_blank">
+            <a href="https://github.com/mfrkankaya/shadcn-themes" target="_blank">
               <BsGithub size={16} />
             </a>
           </Button>
