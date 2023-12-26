@@ -5,35 +5,39 @@ import { convertAllHexToCssVar, convertCssVarToHex } from "@/lib/utils"
 
 function generateLightTheme({ color }: { color: string }): ColorVariables {
   const primary = Color(color)
+  const isWhiteOrBlackOrGray =
+    primary.lightness() === 100 ||
+    primary.lightness() === 0 ||
+    primary.saturationl() === 0
   const primaryForeground = primary.isDark()
-    ? primary.saturationl(2.5).lightness(98)
-    : primary.saturationl(2.5).lightness(2)
+    ? primary.saturationl(isWhiteOrBlackOrGray ? 0 : 2.5).lightness(98)
+    : primary.saturationl(isWhiteOrBlackOrGray ? 0 : 2.5).lightness(2)
   const background = primary.saturationl(0).lightness(100)
   const foreground = background
-    .saturationl(background.saturationl() + 2.5)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : background.saturationl() + 2.5)
     .lightness(5)
   const card = background
   const cardForeground = foreground
   const secondary = card
-    .saturationl(card.saturationl() + 15)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : card.saturationl() + 15)
     .lightness(card.lightness() - 7.5)
   const secondaryForeground = foreground
   const muted = card
-    .saturationl(card.saturationl() + 5)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : card.saturationl() + 5)
     .lightness(card.lightness() - 3)
   const mutedForeground = foreground.lightness(40)
   const accent = card
-    .saturationl(card.saturationl() + 7.5)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : card.saturationl() + 7.5)
     .lightness(card.lightness() - 3)
   const accentForeground = foreground
   const border = card
-    .saturationl(card.saturationl() + 10)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : card.saturationl() + 10)
     .lightness(card.lightness() - 7.5)
   const input = border
-    .saturationl(border.saturationl() + 5)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : border.saturationl() + 5)
     .lightness(border.lightness() - 5)
   const ring = input
-    .saturationl(input.saturationl() + 30)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : input.saturationl() + 30)
     .lightness(input.lightness() - 15)
 
   return {
@@ -61,37 +65,45 @@ function generateLightTheme({ color }: { color: string }): ColorVariables {
 
 function generateDarkTheme({ color }: { color: string }): ColorVariables {
   const primary = Color(color)
+  const isWhiteOrBlackOrGray =
+    primary.lightness() === 100 ||
+    primary.lightness() === 0 ||
+    primary.saturationl() === 0
   const primaryForeground = primary.isDark()
-    ? primary.saturationl(2.5).lightness(98)
-    : primary.saturationl(2.5).lightness(2)
-  const background = primary.saturationl(7.5).lightness(5)
+    ? primary.saturationl(isWhiteOrBlackOrGray ? 0 : 2.5).lightness(98)
+    : primary.saturationl(isWhiteOrBlackOrGray ? 0 : 2.5).lightness(2)
+  const background = primary
+    .saturationl(isWhiteOrBlackOrGray ? 0 : 7.5)
+    .lightness(5)
   const foreground = background
-    .saturationl(background.saturationl() + 5)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : background.saturationl() + 5)
     .lightness(90)
   const card = background
-    .saturationl(background.saturationl() + 1.5)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : background.saturationl() + 1.5)
     .lightness(background.lightness() + 2)
   const cardForeground = foreground
   const secondary = card
-    .saturationl(card.saturationl() + 20)
-    .lightness(card.lightness() + 10)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : card.saturationl() + 15)
+    .lightness(card.lightness() + 7)
   const secondaryForeground = foreground
   const muted = card
-    .saturationl(card.saturationl() + 7.5)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : card.saturationl() + 7.5)
     .lightness(card.lightness() + 5)
-  const mutedForeground = foreground.saturationl(7.5).lightness(60)
+  const mutedForeground = foreground
+    .saturationl(isWhiteOrBlackOrGray ? 0 : 7.5)
+    .lightness(60)
   const accent = card
-    .saturationl(card.saturationl() + 10)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : card.saturationl() + 10)
     .lightness(card.lightness() + 5)
   const accentForeground = foreground
   const border = card
-    .saturationl(card.saturationl() + 6)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : card.saturationl() + 6)
     .lightness(card.lightness() + 3)
   const input = border
-    .saturationl(border.saturationl() + 3)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : border.saturationl() + 3)
     .lightness(border.lightness() + 3)
   const ring = input
-    .saturationl(input.saturationl() + 30)
+    .saturationl(isWhiteOrBlackOrGray ? 0 : input.saturationl() + 30)
     .lightness(input.lightness() + 15)
 
   return {
