@@ -22,24 +22,22 @@ export default function ThemeGeneratorForm() {
   return (
     <div className="w-full max-w-xl flex flex-col items-center space-y-6">
       <div className="grid grid-cols-1 gap-4 w-full sm:grid-cols-2">
-        <ClientOnly fallback={<div className="h-[5.25rem]" />}>
-          <ColorPicker
-            title="Light Color"
-            value={lightColor}
-            onChange={(v) => {
-              if (resolvedTheme !== "light") setTheme("light")
-              setFieldStore("light.color", v)
-            }}
-          />
-          <ColorPicker
-            title="Dark Color"
-            value={darkColor}
-            onChange={(v) => {
-              if (resolvedTheme !== "dark") setTheme("dark")
-              setFieldStore("dark.color", v)
-            }}
-          />
-        </ClientOnly>
+        <ColorPicker
+          title="Light Color"
+          value={lightColor}
+          onChange={(v) => {
+            if (resolvedTheme !== "light") setTheme("light")
+            setFieldStore("light.color", v)
+          }}
+        />
+        <ColorPicker
+          title="Dark Color"
+          value={darkColor}
+          onChange={(v) => {
+            if (resolvedTheme !== "dark") setTheme("dark")
+            setFieldStore("dark.color", v)
+          }}
+        />
       </div>
 
       <div className="mx-auto flex items-center gap-4">

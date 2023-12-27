@@ -5,6 +5,7 @@ import Color from "color"
 
 import { isValidColor } from "@/lib/utils"
 
+import { ClientOnly } from "./client-only"
 import { Input } from "./ui/input"
 
 interface Props {
@@ -22,20 +23,26 @@ export function ColorPicker({ title, value, onChange }: Props) {
         {title}
       </div>
       <div className="relative flex items-center flex-1 w-full">
-        <label
-          className="absolute block w-9 h-9 left-3 rounded-full cursor-pointer overflow-hidden border"
-          style={{ backgroundColor: value }}
+        <ClientOnly
+          fallback={
+            <div className="absolute block w-9 h-9 left-3 rounded-full border bg-foreground/10" />
+          }
         >
-          <input
-            type="color"
-            className="opacity-0 cursor-pointer"
-            value={value}
-            onChange={(e) => {
-              onChange(e.target.value)
-              setColorInput(e.target.value)
-            }}
-          />
-        </label>
+          <label
+            className="absolute block w-9 h-9 left-3 rounded-full cursor-pointer overflow-hidden border"
+            style={{ backgroundColor: value }}
+          >
+            <input
+              type="color"
+              className="opacity-0 cursor-pointer"
+              value={value}
+              onChange={(e) => {
+                onChange(e.target.value)
+                setColorInput(e.target.value)
+              }}
+            />
+          </label>
+        </ClientOnly>
 
         <Input
           className="bg-background w-full h-14 pl-14 rounded-full font-medium text-base"
