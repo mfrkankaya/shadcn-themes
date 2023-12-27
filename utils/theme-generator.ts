@@ -5,6 +5,7 @@ import { convertAllHexToCssVar, convertCssVarToHex } from "@/lib/utils"
 import { DarkOptions, LightOptions } from "@/store/color-store"
 
 function isWOBG(color: Color) {
+  // White Or Black Or Gray
   return (
     color.lightness() === 100 ||
     color.lightness() === 0 ||
@@ -15,10 +16,12 @@ function isWOBG(color: Color) {
 class LightPalette {
   isWhiteOrBlackOrGray: boolean
   primary: Color
+  options: LightOptions
 
   constructor(options: LightOptions) {
     this.isWhiteOrBlackOrGray = isWOBG(Color(options.color))
     this.primary = Color(options.color)
+    this.options = options
   }
 
   getPrimaryForeground() {
@@ -32,7 +35,11 @@ class LightPalette {
   }
 
   getBackground() {
-    return this.primary.saturationl(0).lightness(100)
+    const bgStyle = this.options.backgroundStyle
+    if (bgStyle === "white") return this.primary.saturationl(0).lightness(100)
+    if (bgStyle === "grayish") return this.primary.saturationl(5).lightness(98)
+    // if (bgStyle === "slightly-saturated")
+    return this.primary.saturationl(10).lightness(97)
   }
 
   getForeground() {
@@ -46,7 +53,11 @@ class LightPalette {
 
   getCard() {
     const background = this.getBackground()
+    const isSameBg = this.options.isCardsAndBackgroundSameColor
+    if (isSameBg) return background
     return background
+      .saturationl(this.isWhiteOrBlackOrGray ? 0 : background.saturationl() + 1)
+      .lightness(background.lightness() - 1)
   }
 
   getCardForeground() {
@@ -156,10 +167,12 @@ function generateLightTheme(options: LightOptions): ColorVariables {
 class DarkPalette {
   isWhiteOrBlackOrGray: boolean
   primary: Color
+  options: DarkOptions
 
   constructor(options: DarkOptions) {
     this.isWhiteOrBlackOrGray = isWOBG(Color(options.color))
     this.primary = Color(options.color)
+    this.options = options
   }
 
   getPrimaryForeground() {
@@ -173,9 +186,17 @@ class DarkPalette {
   }
 
   getBackground() {
+    const bgStyle = this.options.backgroundStyle
+    if (bgStyle === "black") return this.primary.saturationl(0).lightness(0)
+    if (bgStyle === "gray") return this.primary.saturationl(0).lightness(5)
+    if (bgStyle === "grayish")
+      return this.primary
+        .saturationl(this.isWhiteOrBlackOrGray ? 0 : 10)
+        .lightness(5)
+    // if (bgStyle === "slightly-saturated")
     return this.primary
-      .saturationl(this.isWhiteOrBlackOrGray ? 0 : 7.5)
-      .lightness(5)
+      .saturationl(this.isWhiteOrBlackOrGray ? 0 : 10)
+      .lightness(7)
   }
 
   getForeground() {
@@ -187,11 +208,12 @@ class DarkPalette {
 
   getCard() {
     const background = this.getBackground()
-    return background
-      .saturationl(
-        this.isWhiteOrBlackOrGray ? 0 : background.saturationl() + 1.5
-      )
-      .lightness(background.lightness() + 2)
+    const isSameBg = this.options.isCardsAndBackgroundSameColor
+    if (isSameBg) return background
+    return background.lightness(
+      background.lightness() +
+        (this.options.backgroundStyle === "black" ? 4 : 2)
+    )
   }
 
   getCardForeground() {
@@ -239,23 +261,19 @@ class DarkPalette {
 
   getBorder() {
     const card = this.getCard()
-    return card
-      .saturationl(this.isWhiteOrBlackOrGray ? 0 : card.saturationl() + 6)
-      .lightness(card.lightness() + 3)
+    return card.lightness(card.lightness() + 8)
   }
 
   getInput() {
     const border = this.getBorder()
-    return border
-      .saturationl(this.isWhiteOrBlackOrGray ? 0 : border.saturationl() + 3)
-      .lightness(border.lightness() + 3)
+    return border.lightness(border.lightness() + 8)
   }
 
   getRing() {
     const input = this.getInput()
     return input
-      .saturationl(this.isWhiteOrBlackOrGray ? 0 : input.saturationl() + 30)
-      .lightness(input.lightness() + 15)
+      .saturationl(this.isWhiteOrBlackOrGray ? 0 : input.saturationl() + 40)
+      .lightness(input.lightness() + 20)
   }
 }
 
