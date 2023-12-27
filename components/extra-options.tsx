@@ -4,9 +4,10 @@ import React from "react"
 import { useTheme } from "next-themes"
 
 import {
-  ColorStore,
   useColorStore,
   useColorStoreSetter,
+  type DarkOptions,
+  type LightOptions,
 } from "@/store/color-store"
 
 import { Card, CardContent } from "./ui/card"
@@ -31,7 +32,7 @@ export function ExtraOptions() {
 }
 
 const LIGHT_BACKGROUND_STYLES: {
-  value: ColorStore["light"]["backgroundStyle"]
+  value: LightOptions["backgroundStyle"]
   title: string
 }[] = [
   { value: "white", title: "White" },
@@ -89,7 +90,7 @@ function LightOptions() {
 }
 
 const DARK_BACKGROUND_STYLES: {
-  value: ColorStore["dark"]["backgroundStyle"]
+  value: DarkOptions["backgroundStyle"]
   title: string
 }[] = [
   { value: "black", title: "Black" },

@@ -62,3 +62,6 @@ export const useColorStore = create<Store>()(
 export function useColorStoreSetter() {
   return useColorStore((state) => state.setField)
 }
+
+export type LightOptions = ColorStore["light"]
+export type DarkOptions = ColorStore["dark"]

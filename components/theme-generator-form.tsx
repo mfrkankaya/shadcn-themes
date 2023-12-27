@@ -6,7 +6,6 @@ import { useTheme } from "next-themes"
 
 import { useColorStore, useColorStoreSetter } from "@/store/color-store"
 
-import { ClientOnly } from "./client-only"
 import { ColorPicker } from "./color-picker"
 import CopyButton from "./copy-button"
 import { ExtraOptions } from "./extra-options"
