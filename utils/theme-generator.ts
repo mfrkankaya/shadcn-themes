@@ -205,7 +205,7 @@ class DarkPalette {
   }
 
   getSecondary() {
-    return this.getCard().saturate(5).lighten(1)
+    return this.getCard().lighten(1)
   }
 
   getSecondaryForeground() {
