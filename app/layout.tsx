@@ -1,11 +1,8 @@
 import "./globals.css"
-
 import type { Metadata } from "next"
-import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GeistSans } from "geist/font/sans"
-
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import Appheader from "@/components/app-header"
@@ -41,11 +38,6 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
-        <Script
-          src="https://ingest.useturtle.com/script/turtle.min.js"
-          data-tid="THFKAYA"
-          defer
-        />
       </body>
     </html>
   )
