@@ -1,13 +1,23 @@
 import React from "react"
 
-import { generateTheme } from "@/utils/theme-generator"
+import { generateThemeV3, generateThemeV4 } from "@/utils/theme-generator"
 import { useColorStore } from "@/store/color-store"
 
-export function useGeneratedColors() {
+export function useGeneratedColorsV3() {
   const lightOptions = useColorStore((state) => state.light)
   const darkOptions = useColorStore((state) => state.dark)
   const colors = React.useMemo(
-    () => generateTheme({ lightOptions, darkOptions }),
+    () => generateThemeV3({ lightOptions, darkOptions }),
+    [lightOptions, darkOptions]
+  )
+  return colors
+}
+
+export function useGeneratedColorsV4() {
+  const lightOptions = useColorStore((state) => state.light)
+  const darkOptions = useColorStore((state) => state.dark)
+  const colors = React.useMemo(
+    () => generateThemeV4({ lightOptions, darkOptions }),
     [lightOptions, darkOptions]
   )
   return colors

@@ -3,10 +3,10 @@
 import React from "react"
 import { useTheme } from "next-themes"
 
-import { useGeneratedColors } from "@/hooks/use-generated-colors"
+import { useGeneratedColorsV3 } from "@/hooks/use-generated-colors"
 
 export function ThemeSync() {
-  const generatedColors = useGeneratedColors()
+  const generatedColors = useGeneratedColorsV3()
   const { resolvedTheme } = useTheme()
 
   React.useEffect(() => {
