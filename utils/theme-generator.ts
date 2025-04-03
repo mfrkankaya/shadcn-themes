@@ -1,7 +1,11 @@
 import Color from "color"
 
 import { ColorVariables } from "@/types/colors"
-import { convertAllHexToCssVar, convertCssVarToHex } from "@/lib/utils"
+import {
+  convertAllHexToCssHslVar,
+  convertAllHexToCssVar,
+  convertCssVarToHex,
+} from "@/lib/utils"
 import { DarkOptions, LightOptions } from "@/store/color-store"
 
 function isWOBG(color: Color) {
@@ -284,7 +288,7 @@ function generateDarkTheme(options: DarkOptions): ColorVariables {
   }
 }
 
-export function generateTheme({
+export function generateThemeV3({
   lightOptions,
   darkOptions,
 }: {
@@ -294,5 +298,18 @@ export function generateTheme({
   return {
     light: convertAllHexToCssVar(generateLightTheme(lightOptions)),
     dark: convertAllHexToCssVar(generateDarkTheme(darkOptions)),
+  }
+}
+
+export function generateThemeV4({
+  lightOptions,
+  darkOptions,
+}: {
+  lightOptions: LightOptions
+  darkOptions: DarkOptions
+}) {
+  return {
+    light: convertAllHexToCssHslVar(generateLightTheme(lightOptions)),
+    dark: convertAllHexToCssHslVar(generateDarkTheme(darkOptions)),
   }
 }
