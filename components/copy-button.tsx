@@ -63,7 +63,7 @@ export default function CopyButton() {
           <DialogTitle>Theme</DialogTitle>
           <DialogDescription>
             Copy and paste the following code into your CSS file. (Chart colors
-            are static for now. I'll add dynamic colors in the future.)
+            are static for now. I&apos;ll add dynamic colors in the future.)
           </DialogDescription>
         </DialogHeader>
         <Tabs onValueChange={(value: any) => setThemeVersion(value)}>
