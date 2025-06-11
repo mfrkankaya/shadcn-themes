@@ -1,4 +1,5 @@
 export type ColorVariables = {
+  "--radius": string
   "--background": string
   "--foreground": string
   "--card": string

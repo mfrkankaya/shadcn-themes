@@ -31,7 +31,7 @@ export function convertAllHexToCssVar(obj: ColorVariables) {
 
   for (const k in obj) {
     const key = k as keyof ColorVariables
-    result[key] = convertHexToCssVar(result[key])
+    if (key !== "--radius") result[key] = convertHexToCssVar(result[key])
   }
 
   return result
@@ -112,7 +112,7 @@ export function getCopyableCssVariablesV3({
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    --radius: 0.625rem;
+    --radius: ${light["--radius"]};
   }
   
   .dark {
@@ -159,7 +159,7 @@ export function getCopyableCssVariablesV3({
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    --radius: 0.625rem;
+    --radius: ${light["--radius"]};
   }
 }`
 }
@@ -172,7 +172,7 @@ export function getCopyableCssVariablesV4({
   dark: ColorVariables
 }) {
   return `:root {
-  --radius: 0.625rem;
+  --radius: ${light["--radius"]};
 
   --background: ${light["--background"]};
   --foreground: ${light["--foreground"]};
@@ -219,7 +219,7 @@ export function getCopyableCssVariablesV4({
 }
 
 .dark {
-  --radius: 0.625rem;
+  --radius: ${light["--radius"]};
 
   --background: ${dark["--background"]};
   --foreground: ${dark["--foreground"]};
@@ -318,7 +318,7 @@ export function convertAllHexToOklchString(obj: ColorVariables) {
 
   for (const k in obj) {
     const key = k as keyof ColorVariables
-    result[key] = hexToOklchString(result[key])
+    if (key !== "--radius") result[key] = hexToOklchString(result[key])
   }
 
   return result

@@ -10,11 +10,13 @@ export type ColorStore = {
     color: string
     isCardsAndBackgroundSameColor: boolean
     backgroundStyle: "white" | "grayish" | "slightly-saturated"
+    radius: string
   }
   dark: {
     color: string
     isCardsAndBackgroundSameColor: boolean
     backgroundStyle: "black" | "gray" | "grayish" | "slightly-saturated"
+    radius: string
   }
 
   isOptionsExpanded: boolean
@@ -37,11 +39,13 @@ export const useColorStore = create<Store>()(
           color: "#9a16ca",
           isCardsAndBackgroundSameColor: true,
           backgroundStyle: "white",
+          radius: "0.625rem",
         },
         dark: {
           color: "#3348e6",
           isCardsAndBackgroundSameColor: false,
           backgroundStyle: "grayish",
+          radius: "0.625rem",
         },
 
         setField: (field, value) => {

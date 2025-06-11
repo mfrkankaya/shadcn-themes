@@ -166,6 +166,7 @@ function generateLightTheme(options: LightOptions): ColorVariables {
   const sidebarRing = light.getSidebarRing()
 
   return {
+    "--radius": options.radius ?? "0.625rem",
     "--background": background.hex(),
     "--foreground": foreground.hex(),
     "--card": card.hex(),
@@ -355,6 +356,7 @@ function generateDarkTheme(options: DarkOptions): ColorVariables {
   const sidebarRing = dark.getSidebarRing()
 
   return {
+    "--radius": options.radius ?? "0.625rem",
     "--background": background.hex(),
     "--foreground": foreground.hex(),
     "--card": card.hex(),
@@ -408,18 +410,5 @@ export function generateThemeV3({
   return {
     light: convertAllHexToCssVar(generateLightTheme(lightOptions)),
     dark: convertAllHexToCssVar(generateDarkTheme(darkOptions)),
-  }
-}
-
-export function generateThemeV4({
-  lightOptions,
-  darkOptions,
-}: {
-  lightOptions: LightOptions
-  darkOptions: DarkOptions
-}) {
-  return {
-    light: convertAllHexToCssHslVar(generateLightTheme(lightOptions)),
-    dark: convertAllHexToCssHslVar(generateDarkTheme(darkOptions)),
   }
 }

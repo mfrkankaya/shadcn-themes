@@ -1,6 +1,6 @@
 import React from "react"
 
-import { generateTheme, generateThemeV3, generateThemeV4 } from "@/utils/theme-generator"
+import { generateTheme, generateThemeV3 } from "@/utils/theme-generator"
 import { useColorStore } from "@/store/color-store"
 
 export function useGeneratedColorsV3() {
