@@ -110,7 +110,7 @@ export function CardsActivityGoal() {
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Set Goal</Button>
+        <Button className="w-full" variant="secondary">Set Goal</Button>
       </CardFooter>
     </Card>
   )

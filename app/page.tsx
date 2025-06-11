@@ -1,6 +1,9 @@
 import React from "react"
 
-import { ExampleHome } from "@/components/examples/example-home"
+import { CardsActivityGoal } from "@/components/examples/activity-goal"
+import { CardsChat } from "@/components/examples/chat-demo"
+import { CardsCreateAccount } from "@/components/examples/create-account"
+import { CardsTeamMembers } from "@/components/examples/team-members"
 import ThemeGeneratorForm from "@/components/theme-generator-form"
 
 export default function HomePage() {
@@ -21,7 +24,12 @@ export default function HomePage() {
           <ThemeGeneratorForm />
         </div>
 
-        <ExampleHome />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <CardsCreateAccount />
+          <CardsActivityGoal />
+          <CardsTeamMembers />
+          <CardsChat />
+        </div>
       </div>
     </>
   )
