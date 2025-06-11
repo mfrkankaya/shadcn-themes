@@ -103,7 +103,7 @@ export function CardsActivityGoal() {
             <BarChart data={data}>
               <Bar
                 dataKey="goal"
-                style={{ fill: "hsl(var(--primary))", opacity: 0.2 }}
+                style={{ fill: "var(--color-primary)", opacity: 0.2 }}
               />
             </BarChart>
           </ResponsiveContainer>

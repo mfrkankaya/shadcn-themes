@@ -32,7 +32,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 
 export default function CopyButton() {
   const [isCopied, setIsCopied] = React.useState(false)
-  const [themeVersion, setThemeVersion] = React.useState<"v3" | "v4">("v3")
+  const [themeVersion, setThemeVersion] = React.useState<"v3" | "v4">("v4")
   const colorsV3 = useGeneratedColorsV3()
   const colorsV4 = useGeneratedColorsV4()
 
@@ -58,18 +58,19 @@ export default function CopyButton() {
           <span>Copy colors</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>Theme</DialogTitle>
           <DialogDescription>
-            Copy and paste the following code into your CSS file.
+            Copy and paste the following code into your CSS file. (Chart colors
+            are static for now. I'll add dynamic colors in the future.)
           </DialogDescription>
         </DialogHeader>
         <Tabs onValueChange={(value: any) => setThemeVersion(value)}>
           <div className="flex items-center justify-between mb-2">
             <TabsList>
-              <TabsTrigger value="v3">v3</TabsTrigger>
-              <TabsTrigger value="v4">v4</TabsTrigger>
+              <TabsTrigger value="v4">Tailwind v4</TabsTrigger>
+              <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
             </TabsList>
             <Button
               onClick={onCopy}
@@ -81,12 +82,20 @@ export default function CopyButton() {
               <span>Copy</span>
             </Button>
           </div>
-          <ScrollArea className="bg-card rounded-lg border max-h-[50vh] relative overflow-auto">
-            <pre className="text-sm p-4 leading-normal">
-              {themeVersion == "v3" && getCopyableCssVariablesV3(colorsV3)}
-              {themeVersion == "v4" && getCopyableCssVariablesV4(colorsV4)}
-            </pre>
-          </ScrollArea>
+          <TabsContent value="v3">
+            <ScrollArea className="bg-card rounded-lg border max-h-[50vh] relative overflow-auto">
+              <pre className="text-sm p-4 leading-normal">
+                {getCopyableCssVariablesV3(colorsV3)}
+              </pre>
+            </ScrollArea>
+          </TabsContent>
+          <TabsContent value="v4">
+            <ScrollArea className="bg-card rounded-lg border max-h-[50vh] relative overflow-auto">
+              <pre className="text-sm p-4 leading-normal">
+                {getCopyableCssVariablesV4(colorsV4)}
+              </pre>
+            </ScrollArea>
+          </TabsContent>
         </Tabs>
       </DialogContent>
     </Dialog>

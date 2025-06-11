@@ -18,4 +18,12 @@ export type ColorVariables = {
   "--border": string
   "--input": string
   "--ring": string
+  "--sidebar": string
+  "--sidebar-foreground": string
+  "--sidebar-primary": string
+  "--sidebar-primary-foreground": string
+  "--sidebar-accent": string
+  "--sidebar-accent-foreground": string
+  "--sidebar-border": string
+  "--sidebar-ring": string
 }

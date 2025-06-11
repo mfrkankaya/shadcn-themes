@@ -63,9 +63,9 @@ export function RevenueCard() {
                 dataKey="revenue"
                 activeDot={{
                   r: 6,
-                  style: { fill: "hsl(var(--primary))", opacity: 0.25 },
+                  style: { fill: "var(--color-primary)", opacity: 0.25 },
                 }}
-                style={{ stroke: "hsl(var(--primary))" }}
+                style={{ stroke: "var(--color-primary)" }}
               />
             </LineChart>
           </ResponsiveContainer>
@@ -89,7 +89,7 @@ export function SubscriptionsCard() {
             <BarChart data={data}>
               <Bar
                 dataKey="subscription"
-                style={{ fill: "hsl(var(--primary))", opacity: 1 }}
+                style={{ fill: "var(--color-primary)", opacity: 1 }}
               />
             </BarChart>
           </ResponsiveContainer>

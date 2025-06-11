@@ -1,14 +1,15 @@
-import Color from "color"
+import Color, { ColorInstance } from "color"
 
 import { ColorVariables } from "@/types/colors"
 import {
   convertAllHexToCssHslVar,
   convertAllHexToCssVar,
+  convertAllHexToOklchString,
   convertCssVarToHex,
 } from "@/lib/utils"
 import { DarkOptions, LightOptions } from "@/store/color-store"
 
-function isWOBG(color: Color) {
+function isWOBG(color: ColorInstance) {
   // White Or Black Or Gray
   return (
     color.lightness() === 100 ||
@@ -19,7 +20,7 @@ function isWOBG(color: Color) {
 
 class LightPalette {
   isWhiteOrBlackOrGray: boolean
-  primary: Color
+  primary: ColorInstance
   options: LightOptions
 
   constructor(options: LightOptions) {
@@ -104,6 +105,38 @@ class LightPalette {
   getRing() {
     return this.getInput().saturate(3).darken(0.1)
   }
+
+  getSidebar() {
+    return this.getCard()
+  }
+
+  getSidebarForeground() {
+    return this.getCardForeground()
+  }
+
+  getSidebarPrimary() {
+    return this.primary
+  }
+
+  getSidebarPrimaryForeground() {
+    return this.getPrimaryForeground()
+  }
+
+  getSidebarAccent() {
+    return this.getAccent()
+  }
+
+  getSidebarAccentForeground() {
+    return this.getAccentForeground()
+  }
+
+  getSidebarBorder() {
+    return this.getBorder()
+  }
+
+  getSidebarRing() {
+    return this.getRing()
+  }
 }
 
 function generateLightTheme(options: LightOptions): ColorVariables {
@@ -123,6 +156,14 @@ function generateLightTheme(options: LightOptions): ColorVariables {
   const border = light.getBorder()
   const input = light.getInput()
   const ring = light.getRing()
+  const sidebar = light.getSidebar()
+  const sidebarForeground = light.getSidebarForeground()
+  const sidebarPrimary = light.getSidebarPrimary()
+  const sidebarPrimaryForeground = light.getSidebarPrimaryForeground()
+  const sidebarAccent = light.getSidebarAccent()
+  const sidebarAccentForeground = light.getSidebarAccentForeground()
+  const sidebarBorder = light.getSidebarBorder()
+  const sidebarRing = light.getSidebarRing()
 
   return {
     "--background": background.hex(),
@@ -144,12 +185,20 @@ function generateLightTheme(options: LightOptions): ColorVariables {
     "--border": border.hex(),
     "--input": input.hex(),
     "--ring": ring.hex(),
+    "--sidebar": sidebar.hex(),
+    "--sidebar-foreground": sidebarForeground.hex(),
+    "--sidebar-primary": sidebarPrimary.hex(),
+    "--sidebar-primary-foreground": sidebarPrimaryForeground.hex(),
+    "--sidebar-accent": sidebarAccent.hex(),
+    "--sidebar-accent-foreground": sidebarAccentForeground.hex(),
+    "--sidebar-border": sidebarBorder.hex(),
+    "--sidebar-ring": sidebarRing.hex(),
   }
 }
 
 class DarkPalette {
   isWhiteOrBlackOrGray: boolean
-  primary: Color
+  primary: ColorInstance
   options: DarkOptions
 
   constructor(options: DarkOptions) {
@@ -245,6 +294,38 @@ class DarkPalette {
   getRing() {
     return this.primary.lightness(40)
   }
+
+  getSidebar() {
+    return this.getCard()
+  }
+
+  getSidebarForeground() {
+    return this.getCardForeground()
+  }
+
+  getSidebarPrimary() {
+    return this.primary
+  }
+
+  getSidebarPrimaryForeground() {
+    return this.getPrimaryForeground()
+  }
+
+  getSidebarAccent() {
+    return this.getAccent()
+  }
+
+  getSidebarAccentForeground() {
+    return this.getAccentForeground()
+  }
+
+  getSidebarBorder() {
+    return this.getBorder()
+  }
+
+  getSidebarRing() {
+    return this.getRing()
+  }
 }
 
 function generateDarkTheme(options: DarkOptions): ColorVariables {
@@ -264,6 +345,14 @@ function generateDarkTheme(options: DarkOptions): ColorVariables {
   const border = dark.getBorder()
   const input = dark.getInput()
   const ring = dark.getRing()
+  const sidebar = dark.getSidebar()
+  const sidebarForeground = dark.getSidebarForeground()
+  const sidebarPrimary = dark.getSidebarPrimary()
+  const sidebarPrimaryForeground = dark.getSidebarPrimaryForeground()
+  const sidebarAccent = dark.getSidebarAccent()
+  const sidebarAccentForeground = dark.getSidebarAccentForeground()
+  const sidebarBorder = dark.getSidebarBorder()
+  const sidebarRing = dark.getSidebarRing()
 
   return {
     "--background": background.hex(),
@@ -285,6 +374,27 @@ function generateDarkTheme(options: DarkOptions): ColorVariables {
     "--border": border.hex(),
     "--input": input.hex(),
     "--ring": ring.hex(),
+    "--sidebar": sidebar.hex(),
+    "--sidebar-foreground": sidebarForeground.hex(),
+    "--sidebar-primary": sidebarPrimary.hex(),
+    "--sidebar-primary-foreground": sidebarPrimaryForeground.hex(),
+    "--sidebar-accent": sidebarAccent.hex(),
+    "--sidebar-accent-foreground": sidebarAccentForeground.hex(),
+    "--sidebar-border": sidebarBorder.hex(),
+    "--sidebar-ring": sidebarRing.hex(),
+  }
+}
+
+export function generateTheme({
+  lightOptions,
+  darkOptions,
+}: {
+  lightOptions: LightOptions
+  darkOptions: DarkOptions
+}) {
+  return {
+    light: convertAllHexToOklchString(generateLightTheme(lightOptions)),
+    dark: convertAllHexToOklchString(generateDarkTheme(darkOptions)),
   }
 }
 

@@ -96,9 +96,9 @@ export function CardsMetric() {
                 dataKey="average"
                 activeDot={{
                   r: 6,
-                  style: { fill: "hsl(var(--primary))", opacity: 0.25 },
+                  style: { fill: "var(--color-primary)", opacity: 0.25 },
                 }}
-                style={{ stroke: "hsl(var(--primary))", opacity: 0.25 }}
+                style={{ stroke: "var(--color-primary)", opacity: 0.25 }}
               />
               <Line
                 type="monotone"
@@ -106,9 +106,9 @@ export function CardsMetric() {
                 strokeWidth={2}
                 activeDot={{
                   r: 8,
-                  style: { fill: "hsl(var(--primary))" },
+                  style: { fill: "var(--color-primary)" },
                 }}
-                style={{ stroke: "hsl(var(--primary))" }}
+                style={{ stroke: "var(--color-primary)" }}
               />
             </LineChart>
           </ResponsiveContainer>

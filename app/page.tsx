@@ -1,14 +1,11 @@
 import React from "react"
 
-import { ClientOnly } from "@/components/client-only"
 import { ExampleHome } from "@/components/examples/example-home"
-import { GtagPageView } from "@/components/gtag"
 import ThemeGeneratorForm from "@/components/theme-generator-form"
 
 export default function HomePage() {
   return (
     <>
-      <GtagPageView />
       <div className="container pt-16 pb-32">
         <div className="mt-12 mb-8 sm:mb-20 flex flex-col items-center">
           <div className="mx-auto mb-8 text-center">
