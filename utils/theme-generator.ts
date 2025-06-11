@@ -103,7 +103,7 @@ class LightPalette {
   }
 
   getRing() {
-    return this.getInput().saturate(3).darken(0.1)
+    return this.primary
   }
 
   getSidebar() {
@@ -293,7 +293,7 @@ class DarkPalette {
   }
 
   getRing() {
-    return this.primary.lightness(40)
+    return this.primary
   }
 
   getSidebar() {
