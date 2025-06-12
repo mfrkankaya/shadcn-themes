@@ -13,9 +13,10 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeSync } from "@/components/theme-sync"
 
 export const metadata: Metadata = {
-  title: "Generate Theme - Shadcn/UI Theme Generator",
+  title:
+    "Shadcn UI Theme Generator | Create Custom Color Schemes for Your UI Components",
   description:
-    "Theme generator for shadcn/ui components. Generate a theme for your app by selecting a color and copy-pasting the generated css variables.",
+    "Create beautiful, customized themes for your shadcn/ui components instantly. Our powerful theme generator lets you select colors and automatically generates CSS variables. Perfect for React developers using shadcn/ui to build modern, accessible web applications. Try our free theme generator tool today.",
 }
 
 export default function RootLayout({

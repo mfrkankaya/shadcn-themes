@@ -11,14 +11,15 @@ export default function HomePage() {
   return (
     <>
       <div className="container pt-16 pb-32 relative">
-        <div className="mt-12 mb-8 flex flex-col items-center relative">
-          <div className="mx-auto mb-8 text-center">
-            <h1 className="font-bold text-4xl max-w-xs mx-auto">
-              Shadcn/UI Theme Generator
+        <div className="mt-4 md:mt-12 mb-8 md:mb-16 flex flex-col items-center relative">
+          <div className="mx-auto text-left sm:text-center">
+            <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl mx-auto max-w-2xl mb-4">
+              Create Custom Themes for Shadcn/UI Components
             </h1>
-            <p className="max-w-md mx-auto mt-2 text-muted-foreground">
-              Generate a theme for your app by selecting a color and
-              copy-pasting the generated css variables.
+            <p className="max-w-xl mx-auto mt-2 text-muted-foreground">
+              Create beautiful, customized themes for your shadcn/ui components instantly. 
+              Select your brand colors and get ready-to-use CSS variables for a consistent, 
+              professional design system that matches your brand identity.
             </p>
           </div>
         </div>

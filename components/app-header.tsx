@@ -10,12 +10,15 @@ export default function Appheader() {
     <div className="fixed top-0 inset-x-0 z-50 bg-background/80 backdrop-blur-sm border-b">
       <div className="container flex items-center justify-between py-2">
         <Link href="/" className="font-bold">
-          shadcn/ui themes
+          Shadcn UI Themes
         </Link>
 
         <div className="flex items-center gap-0.5 -mr-2">
           <Button asChild variant="ghost" size="icon">
-            <a href="https://github.com/mfrkankaya/shadcn-themes" target="_blank">
+            <a
+              href="https://github.com/mfrkankaya/shadcn-themes"
+              target="_blank"
+            >
               <BsGithub size={16} />
             </a>
           </Button>
