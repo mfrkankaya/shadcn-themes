@@ -6,14 +6,17 @@ import { IconBackground } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 
 import { useColorStore } from "@/store/color-store"
+import { useMounted } from "@/hooks/use-mounted"
 import { Select, SelectContent, SelectItem } from "@/components/ui/select"
 
 export default function BgStyleSelect() {
   const { resolvedTheme } = useTheme()
+  const mounted = useMounted()
   const backgroundLight = useColorStore((state) => state.light.backgroundStyle)
   const backgroundDark = useColorStore((state) => state.dark.backgroundStyle)
   const setFieldStore = useColorStore((state) => state.setField)
-  const value = resolvedTheme === "light" ? backgroundLight : backgroundDark
+  const value =
+    mounted && resolvedTheme === "light" ? backgroundLight : backgroundDark
 
   function onValueChange(newValue: string) {
     setFieldStore(
@@ -29,7 +32,7 @@ export default function BgStyleSelect() {
         <IconBackground />
       </SelectTrigger>
       <SelectContent>
-        {resolvedTheme === "light" ? (
+        {mounted && resolvedTheme === "light" ? (
           <SelectItem value="white">White</SelectItem>
         ) : (
           <>
@@ -42,5 +45,4 @@ export default function BgStyleSelect() {
       </SelectContent>
     </Select>
   )
-  return <div>BgStyleSelect</div>
 }

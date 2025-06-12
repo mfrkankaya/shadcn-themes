@@ -8,7 +8,6 @@ import { GeistSans } from "geist/font/sans"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import Appheader from "@/components/app-header"
-import { DevThemeToggler } from "@/components/dev-theme-toggler"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeSync } from "@/components/theme-sync"
 
@@ -35,7 +34,6 @@ export default function RootLayout({
         >
           <Appheader />
           {children}
-          <DevThemeToggler />
           <ThemeSync />
           <Toaster />
         </ThemeProvider>

@@ -13,13 +13,15 @@ import {
   SelectItem,
   SelectLabel,
 } from "@/components/ui/select"
+import { useMounted } from "@/hooks/use-mounted"
 
 export default function RadiusSelect() {
   const { resolvedTheme } = useTheme()
+  const mounted = useMounted()
   const radiusLight = useColorStore((state) => state.light.radius)
   const radiusDark = useColorStore((state) => state.dark.radius)
   const setFieldStore = useColorStore((state) => state.setField)
-  const value = resolvedTheme === "light" ? radiusLight : radiusDark
+  const value = mounted && resolvedTheme === "light" ? radiusLight : radiusDark
 
   function onValueChange(newValue: string) {
     setFieldStore(
