@@ -1,8 +1,8 @@
 "use client"
 
 import React from "react"
+import { IconMoon, IconSun } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
-import { BsMoonStarsFill, BsSunFill } from "react-icons/bs"
 
 import { Button } from "./ui/button"
 
@@ -15,7 +15,7 @@ export function ThemeToggler() {
 
   return (
     <Button size="icon" variant="ghost" onClick={toggleTheme}>
-      {resolvedTheme === "dark" ? <BsSunFill /> : <BsMoonStarsFill />}
+      {resolvedTheme === "dark" ? <IconMoon /> : <IconSun />}
     </Button>
   )
 }
