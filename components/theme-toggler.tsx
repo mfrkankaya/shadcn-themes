@@ -18,15 +18,7 @@ export function ThemeToggler() {
 
   return (
     <Button size="icon" variant="ghost" onClick={toggleTheme}>
-      {mounted ? (
-        resolvedTheme === "dark" ? (
-          <IconMoon />
-        ) : (
-          <IconSun />
-        )
-      ) : (
-        <IconSun />
-      )}
+      {!mounted ? null : resolvedTheme === "dark" ? <IconMoon /> : <IconSun />}
     </Button>
   )
 }

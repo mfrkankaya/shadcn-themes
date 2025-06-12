@@ -43,7 +43,7 @@ export default function CardStyleSelect() {
           className="size-9 md:size-12 rounded-full"
           variant="ghost"
         >
-          {mounted && value ? (
+          {!mounted ? null : value ? (
             <IconStack className="size-6" />
           ) : (
             <IconStackFilled className="size-6" />

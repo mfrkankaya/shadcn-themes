@@ -6,6 +6,7 @@ import { IconBorderRadius } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 
 import { useColorStore } from "@/store/color-store"
+import { useMounted } from "@/hooks/use-mounted"
 import {
   Select,
   SelectContent,
@@ -13,7 +14,6 @@ import {
   SelectItem,
   SelectLabel,
 } from "@/components/ui/select"
-import { useMounted } from "@/hooks/use-mounted"
 
 export default function RadiusSelect() {
   const { resolvedTheme } = useTheme()
@@ -21,7 +21,11 @@ export default function RadiusSelect() {
   const radiusLight = useColorStore((state) => state.light.radius)
   const radiusDark = useColorStore((state) => state.dark.radius)
   const setFieldStore = useColorStore((state) => state.setField)
-  const value = mounted && resolvedTheme === "light" ? radiusLight : radiusDark
+  const value = !mounted
+    ? "0.635rem"
+    : resolvedTheme === "light"
+      ? radiusLight
+      : radiusDark
 
   function onValueChange(newValue: string) {
     setFieldStore(
@@ -31,7 +35,7 @@ export default function RadiusSelect() {
   }
 
   return (
-    <Select value={value} onValueChange={onValueChange}>
+    <Select value={value ?? "0.625rem"} onValueChange={onValueChange}>
       <SelectTrigger className="h-9 md:h-12 flex items-center gap-2 cursor-pointer text-sm">
         <IconBorderRadius />
       </SelectTrigger>

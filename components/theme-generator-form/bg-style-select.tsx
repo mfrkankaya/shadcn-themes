@@ -15,8 +15,11 @@ export default function BgStyleSelect() {
   const backgroundLight = useColorStore((state) => state.light.backgroundStyle)
   const backgroundDark = useColorStore((state) => state.dark.backgroundStyle)
   const setFieldStore = useColorStore((state) => state.setField)
-  const value =
-    mounted && resolvedTheme === "light" ? backgroundLight : backgroundDark
+  const value = !mounted
+    ? "grayish"
+    : resolvedTheme === "light"
+      ? backgroundLight
+      : backgroundDark
 
   function onValueChange(newValue: string) {
     setFieldStore(
@@ -32,7 +35,7 @@ export default function BgStyleSelect() {
         <IconBackground />
       </SelectTrigger>
       <SelectContent>
-        {mounted && resolvedTheme === "light" ? (
+        {!mounted ? null : resolvedTheme === "light" ? (
           <SelectItem value="white">White</SelectItem>
         ) : (
           <>
