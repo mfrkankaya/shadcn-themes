@@ -1,6 +1,5 @@
 import React from "react"
 
-import CopyButton from "@/components/copy-button"
 import { CardsActivityGoal } from "@/components/examples/activity-goal"
 import { CardsChat } from "@/components/examples/chat-demo"
 import { CardsCreateAccount } from "@/components/examples/create-account"
