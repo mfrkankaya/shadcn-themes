@@ -1,5 +1,6 @@
 import React from "react"
 
+import CopyButton from "@/components/copy-button"
 import { CardsActivityGoal } from "@/components/examples/activity-goal"
 import { CardsChat } from "@/components/examples/chat-demo"
 import { CardsCreateAccount } from "@/components/examples/create-account"
@@ -28,7 +29,9 @@ export default function HomePage() {
           <CardsTeamMembers />
           <CardsChat />
         </div>
-        <ThemeGeneratorForm />
+        <div className="sticky bottom-12 mt-12">
+          <ThemeGeneratorForm />
+        </div>
       </div>
     </>
   )

@@ -159,7 +159,7 @@ export function getCopyableCssVariablesV3({
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    --radius: ${light["--radius"]};
+    --radius: ${dark["--radius"]};
   }
 }`
 }
@@ -219,7 +219,7 @@ export function getCopyableCssVariablesV4({
 }
 
 .dark {
-  --radius: ${light["--radius"]};
+  --radius: ${dark["--radius"]};
 
   --background: ${dark["--background"]};
   --foreground: ${dark["--foreground"]};

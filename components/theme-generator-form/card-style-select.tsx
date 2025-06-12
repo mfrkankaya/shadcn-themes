@@ -1,11 +1,12 @@
 "use client"
 
 import React from "react"
-import { IconSquares, IconSquaresFilled } from "@tabler/icons-react"
+import { IconStack, IconStackFilled } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 
 import { useColorStore } from "@/store/color-store"
 import { Button } from "@/components/ui/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 
 export default function CardStyleSelect() {
   const { resolvedTheme } = useTheme()
@@ -28,17 +29,24 @@ export default function CardStyleSelect() {
   }
 
   return (
-    <Button
-      onClick={onValueChange}
-      size="icon"
-      className="size-9 md:size-12 rounded-full"
-      variant="ghost"
-    >
-      {value ? (
-        <IconSquares className="size-6" />
-      ) : (
-        <IconSquaresFilled className="size-6" />
-      )}
-    </Button>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Button
+          onClick={onValueChange}
+          size="icon"
+          className="size-9 md:size-12 rounded-full"
+          variant="ghost"
+        >
+          {value ? (
+            <IconStack className="size-6" />
+          ) : (
+            <IconStackFilled className="size-6" />
+          )}
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Card background style</p>
+      </TooltipContent>
+    </Tooltip>
   )
 }

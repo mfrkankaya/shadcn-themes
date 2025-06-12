@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { CheckIcon, CopyIcon } from "lucide-react"
+import { IconCheck, IconClipboardTextFilled } from "@tabler/icons-react"
 
 import {
   getCopyableCssVariablesV3,
@@ -24,7 +24,6 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
@@ -40,24 +39,31 @@ export default function CopyButton() {
     setIsCopied(true)
     setTimeout(() => setIsCopied(false), 2000)
 
-    switch (themeVersion) {
-      case "v3":
-        navigator.clipboard.writeText(getCopyableCssVariablesV3(colorsV3))
-        break
-      case "v4":
-        navigator.clipboard.writeText(getCopyableCssVariablesV4(colorsV4))
-        break
-    }
+    navigator.clipboard.writeText(
+      themeVersion === "v3"
+        ? getCopyableCssVariablesV3(colorsV3)
+        : getCopyableCssVariablesV4(colorsV4)
+    )
   }
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button className="rounded-full gap-2">
-          <CopyIcon size={16} />
-          <span>Copy colors</span>
-        </Button>
-      </DialogTrigger>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <DialogTrigger asChild>
+            <Button
+              size="icon"
+              className="size-9 md:size-12 rounded-full"
+              variant="ghost"
+            >
+              <IconClipboardTextFilled className="size-6" />
+            </Button>
+          </DialogTrigger>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Copy CSS variables</p>
+        </TooltipContent>
+      </Tooltip>
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
           <DialogTitle>Theme</DialogTitle>
@@ -78,23 +84,23 @@ export default function CopyButton() {
               variant="secondary"
               size="sm"
             >
-              {isCopied ? <CheckIcon size={16} /> : <CopyIcon size={16} />}
+              {isCopied ? <IconCheck /> : <IconClipboardTextFilled />}
               <span>Copy</span>
             </Button>
           </div>
           <TabsContent value="v3">
-            <ScrollArea className="bg-card rounded-lg border max-h-[50vh] relative overflow-auto">
+            <div className="bg-card rounded-lg border max-h-[50vh] relative overflow-auto max-w-[calc(100vw-5rem)]">
               <pre className="text-sm p-4 leading-normal">
                 {getCopyableCssVariablesV3(colorsV3)}
               </pre>
-            </ScrollArea>
+            </div>
           </TabsContent>
           <TabsContent value="v4">
-            <ScrollArea className="bg-card rounded-lg border max-h-[50vh] relative overflow-auto">
+            <div className="bg-card rounded-lg border max-h-[50vh] relative overflow-auto max-w-[calc(100vw-5rem)]">
               <pre className="text-sm p-4 leading-normal">
                 {getCopyableCssVariablesV4(colorsV4)}
               </pre>
-            </ScrollArea>
+            </div>
           </TabsContent>
         </Tabs>
       </DialogContent>
